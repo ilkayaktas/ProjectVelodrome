@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Uygulama İsmi</string>
+    <string name="all_errormessage">Hata durumu oluştu.</string>
+    <string name="splashscreen_slogan">Bu bir şablon uygulamadır!</string>
+
+    <string name="rateme_dialog_title">Bu Uygulamaya Puan Verin</string>
+    <string name="rateme_dialog_message">Eğer uygulamamızdan memnun kaldıysanız, lütfen birkaç saniyenizi ayırarak bize puan verin. Desteğiniz için teşekkürler!</string>
+    <string name="rateme_dialog_ok">Puan ver</string>
+    <string name="rateme_dialog_cancel">Hatırlat</string>
+    <string name="rateme_dialog_no">Hayır, Teşekkürler</string>
+</resources>

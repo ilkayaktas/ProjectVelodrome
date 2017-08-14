@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Application Name</string>
+    <string name="all_errormessage">Error!</string>
+    <string name="splashscreen_slogan">This is a template application!</string>
+
+    <string name="rateme_dialog_title">Rate This Application</string>
+    <string name="rateme_dialog_message">Would you mind rating our application? Thanks for your support!</string>
+    <string name="rateme_dialog_ok">Rate Now</string>
+    <string name="rateme_dialog_cancel">Remind Later</string>
+    <string name="rateme_dialog_no">No, Thanks</string>
+</resources>

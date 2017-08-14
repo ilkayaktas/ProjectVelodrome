@@ -1,0 +1,1 @@
+This is an template project for my android projects.
