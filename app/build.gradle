@@ -1,6 +1,22 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'me.tatarka.retrolambda'
+
+def gitTag = 'git describe --tags'.execute([], project.rootDir).text.trim()
+def gitCommitCount = 100 + Integer.parseInt(
+        'git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
+
+def getApiKey() {
+    def apiKeyFile = file('secret.properties')
+    if (apiKeyFile.canRead()) {
+        def Properties props = new Properties()
+        props.load(new FileInputStream(apiKeyFile))
+        return props['API_KEY']
+    } else {
+        throw new GradleException("Missing api key. Could not read from secret.properties!")
+    }
+}
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -9,8 +25,8 @@ android {
         applicationId "com.ilkayaktas.projectname"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode gitCommitCount
+        versionName gitTag
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
     }
@@ -24,6 +40,23 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+
+        applicationVariants.all {
+            variant -> variant.buildConfigField "String", "API_KEY", "\"" + getApiKey() + "\""
+        }
+
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                output.outputFile = new File(output.outputFile.parent,
+                        output.outputFile.name.replace(".apk", "-${variant.versionName}.apk"))
+            }
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
