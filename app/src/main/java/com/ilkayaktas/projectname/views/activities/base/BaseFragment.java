@@ -20,6 +20,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.ilkayaktas.projectname.di.components.ActivityComponent;
 
@@ -40,6 +43,23 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(false);
     }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(getFragmentLayout(), container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (getTitle() != 0) getActivity().setTitle(getTitle());
+    }
+
+    protected abstract int getTitle();
+
+    protected abstract int getFragmentLayout();
 
     @Override
     public void onAttach(Context context) {

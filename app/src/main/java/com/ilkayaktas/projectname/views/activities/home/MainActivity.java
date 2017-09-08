@@ -22,8 +22,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		
+
 		getActivityComponent().inject(this);
 		
 		setUnBinder(ButterKnife.bind(this));
@@ -33,7 +32,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		// Attach presenter
 		mPresenter.onAttach(MainActivity.this);
 	}
-	
+
+	@Override
+	protected int getActivityLayout() {
+		return R.layout.activity_main;
+	}
+
 	@Override
 	protected void onStart() {
 		super.onStart();

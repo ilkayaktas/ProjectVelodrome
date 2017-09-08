@@ -32,7 +32,7 @@ public class AnotherFragment extends BaseFragment implements AnotherFragmentMvpV
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_horizontal_item, container, false);
+        View view = inflater.inflate(getFragmentLayout(), container, false);
 
         getActivityComponent().inject(this);
 
@@ -41,6 +41,16 @@ public class AnotherFragment extends BaseFragment implements AnotherFragmentMvpV
         mPresenter.onAttach(this);
 
         return view;
+    }
+
+    @Override
+    protected int getTitle() {
+        return 0;
+    }
+
+    @Override
+    protected int getFragmentLayout() {
+        return R.layout.fragment_horizontal_item;
     }
 
     @Override

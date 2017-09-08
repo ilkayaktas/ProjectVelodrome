@@ -22,8 +22,7 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_another);
-		
+
 		getActivityComponent().inject(this);
 		
 		setUnBinder(ButterKnife.bind(this));
@@ -32,7 +31,12 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 		mPresenter.onAttach(AnotherActivity.this);
 		
 	}
-	
+
+	@Override
+	protected int getActivityLayout() {
+		return R.layout.activity_another;
+	}
+
 	@Override
 	protected void onDestroy() {
 		mPresenter.onDetach();

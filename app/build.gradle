@@ -73,6 +73,7 @@ dependencies {
     testCompile "junit:junit:$rootProject.junitVersion"
     androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs'
     })
 
     // Dagger
@@ -90,4 +91,6 @@ dependencies {
     // Lovely Dialog
     compile "com.yarolegovich:lovely-dialog:$rootProject.lovelydialog"
 
+    // Guava
+    compile "com.google.guava:guava:$rootProject.guavaVersion"
 }

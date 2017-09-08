@@ -42,25 +42,15 @@ ext {
     // Dagger version
     daggerVersion = '2.0'
 
-    // ReactiveX
-    rxjava2Version = '2.0.7'
-    rxandroidVersion = '2.0.1'
-
     // Butterknife
     butterKnifeVersion = '8.5.1'
 
     // EventBus
     eventBusVersion = "3.0.0"
 
-    // William Chart
-    williamChartVersion = "2.4.0"
-
-    // Toogle Button Group
-    toggleButtonGroup = "1.2.2"
-
-    // Date Picker
-    datepicker = "1.1.5"
-
     // Lovely Dialog
     lovelydialog = "1.0.7"
+
+    // Guava
+    guavaVersion = "23.0-android"
 }
