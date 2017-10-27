@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
-apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'me.tatarka.retrolambda'
 
 def gitTag = 'git describe --tags'.execute([], project.rootDir).text.trim()
 def gitCommitCount = 100 + Integer.parseInt(
@@ -44,13 +42,6 @@ android {
 
         applicationVariants.all {
             variant -> variant.buildConfigField "String", "API_KEY", "\"" + getApiKey() + "\""
-        }
-
-        applicationVariants.all { variant ->
-            variant.outputs.each { output ->
-                output.outputFile = new File(output.outputFile.parent,
-                        output.outputFile.name.replace(".apk", "-${variant.versionName}.apk"))
-            }
         }
     }
 
