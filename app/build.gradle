@@ -82,6 +82,6 @@ dependencies {
     // Lovely Dialog
     compile "com.yarolegovich:lovely-dialog:$rootProject.lovelydialog"
 
-    // Guava
-    compile "com.google.guava:guava:$rootProject.guavaVersion"
+    // Toasty
+    compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
 }

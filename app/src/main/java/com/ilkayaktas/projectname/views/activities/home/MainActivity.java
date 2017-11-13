@@ -4,15 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-
+import butterknife.ButterKnife;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
 
 import javax.inject.Inject;
-
-import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 	

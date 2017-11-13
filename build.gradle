@@ -15,6 +15,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -49,6 +50,6 @@ ext {
     // Lovely Dialog
     lovelydialog = "1.0.7"
 
-    // Guava
-    guavaVersion = "23.0-android"
+    // Toasty
+    toastyVersion = "1.2.5"
 }
