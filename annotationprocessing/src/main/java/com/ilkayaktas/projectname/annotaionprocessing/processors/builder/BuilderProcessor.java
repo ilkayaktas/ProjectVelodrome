@@ -134,15 +134,26 @@ public class BuilderProcessor extends AbstractProcessor {
                 out.println();
             }
 
-            out.print("public class "+builderSimpleClassName+" {");
+            out.println("public class "+builderSimpleClassName+" {");
+
+            out.println("    private static " + builderSimpleClassName + " thisObject;");
+            out.println("    private static "+simpleClassName+" object;");
+
+            // private constructor
+            out.println("   private " + builderSimpleClassName +"(){}");
             out.println();
 
-            // private field
-            out.print("    private "+simpleClassName+" object = new "+simpleClassName+"();");
+            out.println("   public static " + builderSimpleClassName +" instance(){");
+            out.println("      if(thisObject == null) {");
+            out.println("         thisObject = new "+builderSimpleClassName+"();");
+            out.println("      }");
+            out.println("      object = new "+simpleClassName+"();");
+            out.println("      return thisObject;");
+            out.println("   }");
+            // public instance method
             out.println();
-
             // build method
-            out.print("    public "+simpleClassName+" build() {");
+            out.println("    public "+simpleClassName+" build() {");
             out.println("        return object;");
             out.println("    }");
             out.println();
@@ -151,9 +162,9 @@ public class BuilderProcessor extends AbstractProcessor {
                 String methodName = field.fieldName;
                 String argumentType = field.qualifiedSuperClassName;
 
-                out.print("    public "+builderSimpleClassName+" "+methodName+"("+argumentType+" value) {");
-                out.print("        object."+methodName+" = value;");
-                out.println("        return this;");
+                out.println("    public "+builderSimpleClassName+" "+methodName+"("+argumentType+" value) {");
+                out.println("        object."+methodName+" = value;");
+                out.println("        return thisObject;");
                 out.println("    }");
                 out.println();
             }
@@ -177,9 +188,6 @@ public class BuilderProcessor extends AbstractProcessor {
                 // The class is already compiled:
                 // This is the case if a third party .jar contains compiled .class files with @annotations.Factory annotations.
                 // In that case we can directly access the Class like we do in the try-block.
-//                Class<?> clazz = annotation.type();
-//                qualifiedSuperClassName = clazz.getCanonicalName();
-//                fieldName = clazz.getSimpleName();
 
                 qualifiedSuperClassName = annotatedClassElement.asType().toString();
                 fieldName = annotatedClassElement.getSimpleName().toString();
