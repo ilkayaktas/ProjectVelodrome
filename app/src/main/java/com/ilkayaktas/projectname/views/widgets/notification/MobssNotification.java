@@ -28,7 +28,9 @@ public class MobssNotification {
     public int notificationId = -1;
     private Notification notification;
 
-    public MobssNotification(){
+    public void showNotification() {
+        NotificationManager nm = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+
         Intent intent = new Intent(context, invocationActivity);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("message", message);
@@ -41,11 +43,6 @@ public class MobssNotification {
                 .setContentIntent(contentIntent)
                 .setOngoing(onGoing);
         notification = notificationBuilder.build();
-    }
-
-    public void showNotification() {
-        NotificationManager nm = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-
 
         nm.notify(getNotificationId(), notification);
     }
