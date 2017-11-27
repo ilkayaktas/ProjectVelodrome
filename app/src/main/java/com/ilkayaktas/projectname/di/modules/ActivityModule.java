@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.graphics.Typeface;
 
 import com.ilkayaktas.projectname.controller.IDataManager;
-import com.ilkayaktas.projectname.controller.services.MobssAsyncTask;
+import com.ilkayaktas.projectname.controller.services.tasks.MobssAsyncTask;
 import com.ilkayaktas.projectname.controller.strategy.Strategy;
 import com.ilkayaktas.projectname.di.annotations.ActivityContext;
 import com.ilkayaktas.projectname.di.annotations.PerActivity;

@@ -54,6 +54,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
+    compile project(path: ':annotationprocessing')
+    annotationProcessor project(':annotationprocessing')
+
     // Appcompat and Constraint Layout
     compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     compile "com.android.support.constraint:constraint-layout:$rootProject.constraintsLibraryVersion" // Constraints layout

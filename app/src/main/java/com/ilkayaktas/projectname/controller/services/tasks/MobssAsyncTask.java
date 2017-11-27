@@ -1,4 +1,4 @@
-package com.ilkayaktas.projectname.controller.services;
+package com.ilkayaktas.projectname.controller.services.tasks;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

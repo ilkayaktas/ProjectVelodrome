@@ -14,7 +14,7 @@ import java.util.Random;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
- * Created by aselsan on 27.11.2017 at 16:29.
+ * Created by iaktas on 27.11.2017 at 16:29.
  */
 
 @BuilderPattern
