@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.RemoteViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.google.android.gms.ads.InterstitialAd;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationService;
+import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
@@ -22,6 +24,9 @@ import javax.inject.Inject;
 public class MainActivity extends BaseActivity implements MainMvpView {
 
 	private static final String TAG = "MainActivity";
+	private MobssAds mobssAds;
+	private InterstitialAd interstitialAd = null;
+
 	@Inject
 	MainMvpPresenter<MainMvpView> mPresenter;
 
@@ -39,7 +44,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		mPresenter.onAttach(MainActivity.this);
 
 		// Add AdView
-		MobssAdsBuilder.instance().build().loadBannerAdd(this);
+		MobssAdsBuilder.instance().build().loadBannerAds(this);
+
+		// Load interstatial ads
+		mobssAds = MobssAdsBuilder.instance().build();
+		interstitialAd = mobssAds.loadInterstatialAds(this);
 
 	}
 
@@ -122,5 +131,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 				MobssPeriodicNotificationService.class));
 	}
 
-
+	@OnClick(R.id.ib_main_showads)
+	public void onShowInterstatialAds(View view){
+		mobssAds.showInterstatialAds(interstitialAd);
+	}
 }

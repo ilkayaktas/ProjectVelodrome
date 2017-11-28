@@ -1,9 +1,8 @@
 package com.ilkayaktas.projectname.controller.services.ads;
 
+import android.util.Log;
 import android.view.ViewGroup;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.*;
 import com.ilkayaktas.projectname.annotaionprocessing.annotations.BuilderPattern;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 
@@ -13,7 +12,8 @@ import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 
 @BuilderPattern
 public class MobssAds {
-    public String adUnitId = "/6499/example/banner";
+    private static final String TAG = "MobssAds";
+    public String adUnitId = null;
 
     /** If you want to add ads on layout, use below and inflate it.
          <com.google.android.gms.ads.AdView
@@ -28,7 +28,11 @@ public class MobssAds {
          </com.google.android.gms.ads.AdView>
      * @param activity
      */
-    public void loadBannerAdd(BaseActivity activity){
+    public void loadBannerAds(BaseActivity activity){
+
+        // Test ad
+        if (adUnitId == null)adUnitId = "/6499/example/banner";
+
         // Create adView
         AdView adView = new AdView(activity);
         adView.setAdSize(AdSize.LARGE_BANNER);
@@ -40,5 +44,36 @@ public class MobssAds {
         // Load ads
         adView.loadAd(new AdRequest.Builder().build());
 
+    }
+
+    public InterstitialAd loadInterstatialAds(BaseActivity activity){
+        // Test ad
+        if (adUnitId == null)adUnitId = "/6499/example/interstitial";
+
+        InterstitialAd mInterstitialAd = new InterstitialAd(activity);
+        mInterstitialAd.setAdUnitId(adUnitId);
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                // Load the next interstitial.
+                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+            }
+
+            @Override
+            public void onAdLoaded() {
+                Log.d(TAG, "onAdLoaded: Ad is loaded.");
+            }
+
+        });
+
+        return mInterstitialAd;
+    }
+
+    public void showInterstatialAds(InterstitialAd mInterstitialAd){
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
     }
 }
