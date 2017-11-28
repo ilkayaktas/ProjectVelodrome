@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.RemoteViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.ilkayaktas.projectname.R;
@@ -13,6 +14,8 @@ import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationS
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
+import com.ilkayaktas.projectname.views.widgets.notification.MobssNotification;
+import com.ilkayaktas.projectname.views.widgets.notification.MobssNotificationBuilder;
 
 import javax.inject.Inject;
 
@@ -80,7 +83,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	public void onSendNotificationButton(View view){
 		Log.d(TAG, "onSendNotificationButton: send notification");
 
+		RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notification_custom);
+		contentView.setImageViewResource(R.id.image, R.mipmap.ic_launcher);
+		contentView.setTextViewText(R.id.title, "Custom notification");
+		contentView.setTextViewText(R.id.text, "This is a custom layout");
 
+		MobssNotification notification = MobssNotificationBuilder.instance()
+				.context(this)
+				.invocationActivity(MainActivity.class)
+				.remoteViews(contentView)
+				.smallIcon(R.mipmap.ic_launcher)
+				.build();
+
+		notification.showNotification();
 	}
 
 	@OnClick(R.id.ib_main_startservice)

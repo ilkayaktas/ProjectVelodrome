@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
+import android.widget.RemoteViews;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.annotaionprocessing.annotations.BuilderPattern;
 
@@ -26,6 +27,7 @@ public class MobssNotification {
     public int smallIcon = R.mipmap.ic_launcher;
     public boolean onGoing = false;
     public int notificationId = -1;
+    public RemoteViews remoteViews = null;
     private Notification notification;
 
     public void showNotification() {
@@ -38,10 +40,15 @@ public class MobssNotification {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(smallIcon)
-                .setContentText(message)
-                .setContentTitle(title)
                 .setContentIntent(contentIntent)
                 .setOngoing(onGoing);
+
+        if(remoteViews != null) {
+            notificationBuilder.setContent(remoteViews);
+        } else{
+            notificationBuilder.setContentText(message).setContentTitle(title);
+        }
+
         notification = notificationBuilder.build();
 
         nm.notify(getNotificationId(), notification);
