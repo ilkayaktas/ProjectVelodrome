@@ -15,7 +15,12 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://jitpack.io" }
+        maven {
+            url "https://jitpack.io"
+        }
+        maven {
+            url "https://maven.google.com"
+        }
     }
 }
 
@@ -30,8 +35,11 @@ ext {
     compileSdkVersion = 27
     buildToolsVersion = '26.0.2'
 
+    // Ads
+    adsVersion = "11.6.0"
+
     // App dependencies
-    supportLibraryVersion = '25.3.1'
+    supportLibraryVersion = '27.0.1'
     constraintsLibraryVersion = '1.0.2'
 
     //Test dependencies

@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationService;
+import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
@@ -36,6 +37,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 		// Attach presenter
 		mPresenter.onAttach(MainActivity.this);
+
+		// Add AdView
+		MobssAdsBuilder.instance().build().loadBannerAdd(this);
+
 	}
 
 	@Override
