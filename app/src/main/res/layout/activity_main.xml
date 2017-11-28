@@ -10,6 +10,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
+            android:layout_marginTop="80dp"
             app:layout_constraintBottom_toTopOf="@id/ib_main_sendcustomnotification"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -34,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@id/ib_main_showads"
+            app:layout_constraintBottom_toTopOf="@id/ib_main_showads"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ib_main_sendcustomnotification"
@@ -46,10 +47,23 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ib_main_showrewadedads"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ib_main_startservice"
             android:background="@drawable/button_stroke_black"
             android:text="Show Interstatial Ads"/>
+
+    <TextView
+            android:id="@+id/ib_main_showrewadedads"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ib_main_showads"
+            android:background="@drawable/button_stroke_black"
+            android:text="Show Rewarded Ads"/>
+
 </android.support.constraint.ConstraintLayout>

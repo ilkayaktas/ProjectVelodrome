@@ -3,12 +3,14 @@ package com.ilkayaktas.projectname.views.activities.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RemoteViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationService;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
@@ -26,6 +28,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	private static final String TAG = "MainActivity";
 	private MobssAds mobssAds;
 	private InterstitialAd interstitialAd = null;
+	private RewardedVideoAd rewardedVideoAd = null;
 
 	@Inject
 	MainMvpPresenter<MainMvpView> mPresenter;
@@ -43,12 +46,15 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		// Attach presenter
 		mPresenter.onAttach(MainActivity.this);
 
-		// Add AdView
+		// Load banner ads
 		MobssAdsBuilder.instance().build().loadBannerAds(this);
 
 		// Load interstatial ads
 		mobssAds = MobssAdsBuilder.instance().build();
 		interstitialAd = mobssAds.loadInterstitialAds(this);
+
+		// Load rewarded video ads
+		rewardedVideoAd = mobssAds.loadRewardedVideoAds(this, rewardItem -> Log.d(TAG, "Duded Rewarded: type:"+rewardItem.getType()+" amount:"+rewardItem.getAmount()));
 
 	}
 
@@ -72,7 +78,20 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@Override
 	protected void onDestroy() {
 		mPresenter.onDetach();
+		rewardedVideoAd.destroy(this);
 		super.onDestroy();
+	}
+
+	@Override
+	protected void onResume() {
+		rewardedVideoAd.resume(this);
+		super.onResume();
+	}
+
+	@Override
+	protected void onPause() {
+		rewardedVideoAd.pause(this);
+		super.onPause();
 	}
 
 	public static Intent getStartIntent(Context context) {
@@ -135,4 +154,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	public void onShowInterstatialAds(View view){
 		mobssAds.showInterstitialAds(interstitialAd);
 	}
+
+	@OnClick(R.id.ib_main_showrewadedads)
+	public void onShowRewardedVideoAds(View view){
+		mobssAds.showRewardedVideoAds(rewardedVideoAd);
+	}
+
 }

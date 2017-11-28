@@ -3,6 +3,9 @@ package com.ilkayaktas.projectname.controller.services.ads;
 import android.util.Log;
 import android.view.ViewGroup;
 import com.google.android.gms.ads.*;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.ilkayaktas.projectname.annotaionprocessing.annotations.BuilderPattern;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 
@@ -75,5 +78,65 @@ public class MobssAds {
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         }
+    }
+
+    public RewardedVideoAd loadRewardedVideoAds(BaseActivity activity, OnRewardedListener onRewarded){
+        if (adUnitId == null) adUnitId = "ca-app-pub-3940256099942544/5224354917";
+
+        RewardedVideoAd  mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(activity);
+        mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener(){
+            @Override
+            public void onRewardedVideoAdLoaded() {
+                Log.d(TAG, "onRewardedVideoAdLoaded:");
+            }
+
+            @Override
+            public void onRewardedVideoAdOpened() {
+                Log.d(TAG, "onRewardedVideoAdOpened: ");
+            }
+
+            @Override
+            public void onRewardedVideoStarted() {
+                Log.d(TAG, "onRewardedVideoStarted: ");
+            }
+
+            @Override
+            public void onRewardedVideoAdClosed() {
+                Log.d(TAG, "onRewardedVideoAdClosed: ");
+                mRewardedVideoAd.loadAd(adUnitId,
+                        new AdRequest.Builder().build());
+            }
+
+            @Override
+            public void onRewarded(RewardItem rewardItem) {
+                Log.d(TAG, "onRewarded: Vuhuuuuuu Rewarded");
+                onRewarded.onRewarded(rewardItem);
+            }
+
+            @Override
+            public void onRewardedVideoAdLeftApplication() {
+                Log.d(TAG, "onRewardedVideoAdLeftApplication: ");
+            }
+
+            @Override
+            public void onRewardedVideoAdFailedToLoad(int i) {
+                Log.d(TAG, "onRewardedVideoAdFailedToLoad: ");
+            }
+        });
+
+        mRewardedVideoAd.loadAd(adUnitId,
+                new AdRequest.Builder().build());
+
+        return mRewardedVideoAd;
+    }
+
+    public void showRewardedVideoAds(RewardedVideoAd mRewardedVideoAd){
+        if (mRewardedVideoAd.isLoaded()) {
+            mRewardedVideoAd.show();
+        }
+    }
+
+    public interface OnRewardedListener{
+        void onRewarded(RewardItem rewardItem);
     }
 }
