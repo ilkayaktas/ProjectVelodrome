@@ -3,7 +3,6 @@ package com.ilkayaktas.projectname.views.activities.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -81,7 +80,21 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 	@OnClick(R.id.ib_main_sendnotification)
 	public void onSendNotificationButton(View view){
-		Log.d(TAG, "onSendNotificationButton: send notification");
+		MobssNotification notification = MobssNotificationBuilder.instance()
+				.context(MainActivity.this)
+				.invocationActivity(MainActivity.class)
+				.title(TAG)
+				.message("Notification message: " + System.currentTimeMillis())
+				.smallIcon(R.mipmap.ic_launcher)
+				.build();
+
+		notification.showNotification();
+
+		notification.showNotification();
+	}
+
+	@OnClick(R.id.ib_main_sendcustomnotification)
+	public void onSendCustomNotificationButton(View view){
 
 		RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notification_custom);
 		contentView.setImageViewResource(R.id.image, R.mipmap.ic_launcher);
