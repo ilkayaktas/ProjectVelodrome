@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 		// Load interstatial ads
 		mobssAds = MobssAdsBuilder.instance().build();
-		interstitialAd = mobssAds.loadInterstatialAds(this);
+		interstitialAd = mobssAds.loadInterstitialAds(this);
 
 	}
 
@@ -133,6 +133,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 	@OnClick(R.id.ib_main_showads)
 	public void onShowInterstatialAds(View view){
-		mobssAds.showInterstatialAds(interstitialAd);
+		mobssAds.showInterstitialAds(interstitialAd);
 	}
 }

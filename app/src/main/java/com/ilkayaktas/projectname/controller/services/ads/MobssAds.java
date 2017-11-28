@@ -46,7 +46,7 @@ public class MobssAds {
 
     }
 
-    public InterstitialAd loadInterstatialAds(BaseActivity activity){
+    public InterstitialAd loadInterstitialAds(BaseActivity activity){
         // Test ad
         if (adUnitId == null)adUnitId = "/6499/example/interstitial";
 
@@ -71,7 +71,7 @@ public class MobssAds {
         return mInterstitialAd;
     }
 
-    public void showInterstatialAds(InterstitialAd mInterstitialAd){
+    public void showInterstitialAds(InterstitialAd mInterstitialAd){
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         }
