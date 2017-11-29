@@ -42,6 +42,12 @@ public final class AppConstants {
     
     public static final int REPORT_RECORD_HISTORY_COUNT = 10;
 
+    public static final String ADMOB_AD_UNIT_ID = "ca-app-pub-8425622277008316/6036568233";
+    public static final String ADMOB_INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-8425622277008316/8201968080";
+    public static final String ADMOB_REWARDEDVIDEO_AD_UNIT_ID = "ca-app-pub-8425622277008316/9544584319";
+
+    public static final String ADMOB_APP_ID = "ca-app-pub-8425622277008316~9226494899";
+
     private AppConstants() {
         // This utility class is not publicly instantiable
     }
