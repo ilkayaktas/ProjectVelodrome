@@ -53,17 +53,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		MobileAds.initialize(this, AppConstants.ADMOB_APP_ID);
 
 		// Load banner ads
-		MobssAdsBuilder.instance().adUnitId(AppConstants.ADMOB_AD_UNIT_ID).build().loadBannerAds(this);
+		MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_AD_UNIT_ID).*/build().loadBannerAds(this);
 
 		// Load interstatial ads
-		mobssAds = MobssAdsBuilder.instance().adUnitId(AppConstants.ADMOB_INTERSTITIAL_AD_UNIT_ID).build();
+		mobssAds = MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_INTERSTITIAL_AD_UNIT_ID).*/build();
 		interstitialAd = mobssAds.loadInterstitialAds(this);
 
-		mobssAds1 = MobssAdsBuilder.instance().adUnitId(AppConstants.ADMOB_REWARDEDVIDEO_AD_UNIT_ID).build();
+		mobssAds1 = MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_REWARDEDVIDEO_AD_UNIT_ID).*/build();
 		// Load rewarded video ads
 		rewardedVideoAd = mobssAds1.loadRewardedVideoAds(this, rewardItem -> Log.d(TAG, "Duded Rewarded: type:"+rewardItem.getType()+" amount:"+rewardItem.getAmount()));
 
-		mobssAds2 = MobssAdsBuilder.instance().adUnitId(AppConstants.ADMOB_AD_UNIT_ID).build();
+		mobssAds2 = MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_AD_UNIT_ID).*/build();
 		mobssAds2.loadNativeAdsContent(this, findViewById(R.id.fl_adplaceholder));
 
 	}
