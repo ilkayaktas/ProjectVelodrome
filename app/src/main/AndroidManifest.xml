@@ -3,6 +3,7 @@
           package="com.ilkayaktas.projectname">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
             android:name=".App"
@@ -39,7 +40,17 @@
         </receiver>
 
         <service
-                android:name=".controller.services.MobssPeriodicNotificationService"
+                android:name=".controller.services.MobssPeriodicNotificationTimerService"
+                android:enabled="true"
+                android:exported="false"/>
+
+        <service
+                android:name=".controller.alarms.dailynotification.MobssCustomNotificationService"
+                android:enabled="true"
+                android:exported="false"/>
+
+        <service
+                android:name=".controller.alarms.dailynotification.MobssNotificationService"
                 android:enabled="true"
                 android:exported="false"/>
 

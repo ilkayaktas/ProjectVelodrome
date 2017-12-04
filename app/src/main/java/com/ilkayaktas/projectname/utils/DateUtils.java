@@ -2,6 +2,7 @@ package com.ilkayaktas.projectname.utils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -23,5 +24,13 @@ public class DateUtils {
     public static String getFormattedDateAsHour(Date date){
         return hourFormat.format(date);
     }
-    
+
+    public static Calendar getCalendar(int hour, int minute){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
+
+        return calendar;
+    }
 }

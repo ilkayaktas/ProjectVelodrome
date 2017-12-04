@@ -13,10 +13,12 @@ import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.ilkayaktas.projectname.R;
-import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationService;
+import com.ilkayaktas.projectname.controller.alarms.dailynotification.DailyNotificationAlarm;
+import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationTimerService;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
 import com.ilkayaktas.projectname.utils.AppConstants;
+import com.ilkayaktas.projectname.utils.DateUtils;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
@@ -24,6 +26,7 @@ import com.ilkayaktas.projectname.views.widgets.notification.MobssNotification;
 import com.ilkayaktas.projectname.views.widgets.notification.MobssNotificationBuilder;
 
 import javax.inject.Inject;
+import java.util.Calendar;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
@@ -133,7 +136,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 		notification.showNotification();
 
-		notification.showNotification();
 	}
 
 	@OnClick(R.id.ib_main_sendcustomnotification)
@@ -157,7 +159,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@OnClick(R.id.ib_main_startservice)
 	public void onStartNotificationServiceButton(View view){
 		startService(new Intent(MainActivity.this,
-				MobssPeriodicNotificationService.class));
+				MobssPeriodicNotificationTimerService.class));
 	}
 
 	@OnClick(R.id.ib_main_showads)
@@ -170,4 +172,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		mobssAds1.showRewardedVideoAds(rewardedVideoAd);
 	}
 
+	@OnClick(R.id.ib_main_setalarm)
+	public void onSetAlarmButton(View view){
+		Calendar calendar = DateUtils.getCalendar(12, 0);
+
+		new DailyNotificationAlarm(this).set(calendar);
+
+		Log.d(TAG, "onSetAlarmButton: Alarm is set to " + calendar.getTime().toString());
+	}
 }

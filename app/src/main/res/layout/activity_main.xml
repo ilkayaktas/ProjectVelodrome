@@ -59,18 +59,29 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/ib_main_setalarm"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ib_main_showads"
             android:background="@drawable/button_stroke_black"
             android:text="Show Rewarded Ads"/>
 
+    <TextView
+            android:id="@+id/ib_main_setalarm"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ib_main_showrewadedads"
+            android:background="@drawable/button_stroke_black"
+            android:text="Set Alarm To 1 Minute Later"/>
+
     <FrameLayout
-            android:background="@color/mobss_color_black"
             android:id="@+id/fl_adplaceholder"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -17,7 +17,7 @@ import java.util.TimerTask;
  * Created by iaktas on 23.11.2017 at 14:41.
  */
 
-public class MobssPeriodicNotificationService extends Service {
+public class MobssPeriodicNotificationTimerService extends Service {
     private static final String TAG = "MobssPeriodicNotificationService";
     private Timer alarmTimer;
     public TimerTask timerTask;
@@ -32,7 +32,7 @@ public class MobssPeriodicNotificationService extends Service {
             @Override
             public void run() {
                 MobssNotification notification = MobssNotificationBuilder.instance()
-                        .context(MobssPeriodicNotificationService.this)
+                        .context(MobssPeriodicNotificationTimerService.this)
                         .invocationActivity(MainActivity.class)
                         .title(TAG)
                         .message("Notification message: " + System.currentTimeMillis())
