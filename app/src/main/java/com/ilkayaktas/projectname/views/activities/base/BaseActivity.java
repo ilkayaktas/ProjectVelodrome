@@ -13,7 +13,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-
+import butterknife.Unbinder;
 import com.ilkayaktas.projectname.App;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.di.annotations.ActivityContext;
@@ -22,8 +22,6 @@ import com.ilkayaktas.projectname.di.components.DaggerActivityComponent;
 import com.ilkayaktas.projectname.di.modules.ActivityModule;
 
 import javax.inject.Inject;
-
-import butterknife.Unbinder;
 
 /**
  * Created by ilkay on 09/03/2017.
@@ -38,11 +36,11 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 	private Unbinder mUnBinder;
 
 	@Inject
-	public Typeface textFont;
+	public Typeface fontSkecth;
 
 	@Inject
 	@ActivityContext
-	public Typeface typeface;
+	public Typeface fontGothic;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -130,7 +128,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 		TextView myActionBar = (TextView) findViewById(titleId);
 		if(myActionBar != null) {
 			myActionBar.setTextColor(Color.WHITE);
-			myActionBar.setTypeface(textFont);
+			myActionBar.setTypeface(fontSkecth);
 			myActionBar.setTextSize(20);
 		}
 	}

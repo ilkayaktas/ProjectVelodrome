@@ -2,13 +2,13 @@ package com.ilkayaktas.projectname.views.activities.another;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-
+import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 
 import javax.inject.Inject;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by ilkay on 02/08/2017.
@@ -18,7 +18,10 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 	
 	@Inject
 	AnotherMvpPresenter<AnotherMvpView> mPresenter;
-	
+
+	@BindView(R.id.toolbar_title)
+	TextView toolbarTitle;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,7 +32,8 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 		
 		// Attach presenter
 		mPresenter.onAttach(AnotherActivity.this);
-		
+
+		setFont();
 	}
 
 	@Override
@@ -53,5 +57,9 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 		} else {
 			return super.onKeyDown(keyCode, event);
 		}
+	}
+
+	private void setFont(){
+		toolbarTitle.setTypeface(fontGothic);
 	}
 }

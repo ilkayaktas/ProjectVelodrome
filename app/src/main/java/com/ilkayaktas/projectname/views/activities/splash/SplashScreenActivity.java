@@ -64,7 +64,7 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenMv
 	}
 	
 	private void changeUIFonts(){
-		slogan.setTypeface(typeface);
+		slogan.setTypeface(fontGothic);
 	}
 	
 	@Override

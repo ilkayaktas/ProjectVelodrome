@@ -33,6 +33,13 @@
                     android:value=".views.activities.home.MainActivity"/>
         </activity>
 
+        <activity
+                android:name=".views.activities.another.AnotherActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan"
+                android:theme="@style/Theme.Design.NoActionBar">
+        </activity>
+
         <receiver android:name=".controller.services.broadcastreceivers.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

@@ -19,6 +19,7 @@ import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
 import com.ilkayaktas.projectname.utils.AppConstants;
 import com.ilkayaktas.projectname.utils.DateUtils;
+import com.ilkayaktas.projectname.views.activities.another.AnotherActivity;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
@@ -179,5 +180,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		new DailyNotificationAlarm(this).set(calendar);
 
 		Log.d(TAG, "onSetAlarmButton: Alarm is set to " + calendar.getTime().toString());
+	}
+
+	@OnClick(R.id.ib_main_openotheractivity)
+	public void onOpenOtherACtivity(View view){
+		startActivity(AnotherActivity.class);
 	}
 }
