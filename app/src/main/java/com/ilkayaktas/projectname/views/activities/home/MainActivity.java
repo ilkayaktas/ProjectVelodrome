@@ -7,12 +7,13 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RemoteViews;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
-import com.ilkayaktas.projectname.BuildConfig;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.alarms.dailynotification.DailyNotificationAlarm;
 import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationTimerService;
@@ -41,6 +42,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@Inject
 	MainMvpPresenter<MainMvpView> mPresenter;
 
+	@BindView(R.id.adView) AdView adView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -54,22 +57,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		// Attach presenter
 		mPresenter.onAttach(MainActivity.this);
 
-		MobileAds.initialize(this, BuildConfig.ADMOB_APP_ID);
-
-		// Load banner ads
-		MobssAdsBuilder.instance().build().loadBannerAds(this);
-
-		// Load interstatial ads
-		mobssAds = MobssAdsBuilder.instance().build();
-		interstitialAd = mobssAds.loadInterstitialAds(this);
-
-		mobssAds1 = MobssAdsBuilder.instance().build();
-		// Load rewarded video ads
-		rewardedVideoAd = mobssAds1.loadRewardedVideoAds(this, rewardItem -> Log.d(TAG, "Duded Rewarded: type:"+rewardItem.getType()+" amount:"+rewardItem.getAmount()));
-
-		mobssAds2 = MobssAdsBuilder.instance().build();
-		mobssAds2.loadNativeAdsContent(this, findViewById(R.id.fl_adplaceholder));
-
+		loadAds();
 	}
 
 	@Override
@@ -185,5 +173,26 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@OnClick(R.id.ib_main_openotheractivity)
 	public void onOpenOtherACtivity(View view){
 		startActivity(AnotherActivity.class);
+	}
+
+	private void loadAds(){
+		AdRequest adRequest = new AdRequest.Builder().build();
+		adView.loadAd(adRequest);
+
+		// Load banner ads
+		MobssAdsBuilder.instance().build().loadBannerAds(this);
+
+		// Load interstatial ads
+		mobssAds = MobssAdsBuilder.instance().build();
+		interstitialAd = mobssAds.loadInterstitialAds(this);
+
+		mobssAds1 = MobssAdsBuilder.instance().build();
+		// Load rewarded video ads
+		rewardedVideoAd = mobssAds1.loadRewardedVideoAds(this, rewardItem -> Log.d(TAG, "Duded Rewarded: type:"+rewardItem.getType()+" amount:"+rewardItem.getAmount()));
+
+		mobssAds2 = MobssAdsBuilder.instance().build();
+		mobssAds2.loadNativeAdsContent(this, findViewById(R.id.fl_adplaceholder));
+
+
 	}
 }
