@@ -12,12 +12,12 @@ import butterknife.OnClick;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.ilkayaktas.projectname.BuildConfig;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.alarms.dailynotification.DailyNotificationAlarm;
 import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationTimerService;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
-import com.ilkayaktas.projectname.utils.AppConstants;
 import com.ilkayaktas.projectname.utils.DateUtils;
 import com.ilkayaktas.projectname.views.activities.another.AnotherActivity;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
@@ -54,20 +54,20 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		// Attach presenter
 		mPresenter.onAttach(MainActivity.this);
 
-		MobileAds.initialize(this, AppConstants.ADMOB_APP_ID);
+		MobileAds.initialize(this, BuildConfig.ADMOB_APP_ID);
 
 		// Load banner ads
-		MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_AD_UNIT_ID).*/build().loadBannerAds(this);
+		MobssAdsBuilder.instance().build().loadBannerAds(this);
 
 		// Load interstatial ads
-		mobssAds = MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_INTERSTITIAL_AD_UNIT_ID).*/build();
+		mobssAds = MobssAdsBuilder.instance().build();
 		interstitialAd = mobssAds.loadInterstitialAds(this);
 
-		mobssAds1 = MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_REWARDEDVIDEO_AD_UNIT_ID).*/build();
+		mobssAds1 = MobssAdsBuilder.instance().build();
 		// Load rewarded video ads
 		rewardedVideoAd = mobssAds1.loadRewardedVideoAds(this, rewardItem -> Log.d(TAG, "Duded Rewarded: type:"+rewardItem.getType()+" amount:"+rewardItem.getAmount()));
 
-		mobssAds2 = MobssAdsBuilder.instance()./*adUnitId(AppConstants.ADMOB_AD_UNIT_ID).*/build();
+		mobssAds2 = MobssAdsBuilder.instance().build();
 		mobssAds2.loadNativeAdsContent(this, findViewById(R.id.fl_adplaceholder));
 
 	}

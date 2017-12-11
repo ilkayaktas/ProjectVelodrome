@@ -13,14 +13,15 @@ import com.google.android.gms.ads.formats.NativeContentAdView;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
-import com.ilkayaktas.projectname.R;
+import com.ilkayaktas.projectname.BuildConfig;
 import com.ilkayaktas.projectname.annotaionprocessing.annotations.BuilderPattern;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
+import com.ilkayaktas.projectname.R;
 
 import java.util.List;
 
 /**
- * Created by aselsan on 28.11.2017 at 22:10.
+ * Created by iaktas on 28.11.2017 at 22:10.
  */
 
 @BuilderPattern
@@ -29,22 +30,22 @@ public class MobssAds {
     public String adUnitId = null;
 
     /** If you want to add ads on layout, use below and inflate it.
-         <com.google.android.gms.ads.AdView
-             xmlns:ads="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/adView"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_centerHorizontal="true"
-             android:layout_alignParentBottom="true"
-             ads:adSize="BANNER"
-             ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
-         </com.google.android.gms.ads.AdView>
+     <com.google.android.gms.ads.AdView
+     xmlns:ads="http://schemas.android.com/apk/res-auto"
+     android:id="@+id/adView"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_centerHorizontal="true"
+     android:layout_alignParentBottom="true"
+     ads:adSize="BANNER"
+     ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+     </com.google.android.gms.ads.AdView>
      * @param activity
      */
     public void loadBannerAds(BaseActivity activity){
 
         // Test ad
-        if (adUnitId == null)adUnitId = "/6499/example/banner";
+        adUnitId = BuildConfig.ADMOB_BANNER_AD_UNIT_ID;
 
         // Create adView
         AdView adView = new AdView(activity);
@@ -53,7 +54,7 @@ public class MobssAds {
 
         // Ad into
         activity.addContentView(adView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                                                    ViewGroup.LayoutParams.WRAP_CONTENT));
+                ViewGroup.LayoutParams.WRAP_CONTENT));
         // Load ads
         adView.loadAd(new AdRequest.Builder().build());
 
@@ -61,7 +62,7 @@ public class MobssAds {
 
     public InterstitialAd loadInterstitialAds(BaseActivity activity){
         // Test ad
-        if (adUnitId == null)adUnitId = "/6499/example/interstitial";
+        adUnitId = BuildConfig.ADMOB_INTERSTITIAL_AD_UNIT_ID;
 
         InterstitialAd mInterstitialAd = new InterstitialAd(activity);
         mInterstitialAd.setAdUnitId(adUnitId);
@@ -91,7 +92,7 @@ public class MobssAds {
     }
 
     public RewardedVideoAd loadRewardedVideoAds(BaseActivity activity, OnRewardedListener onRewarded){
-        if (adUnitId == null) adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        adUnitId = BuildConfig.ADMOB_REWARDEDVIDEO_AD_UNIT_ID;
 
         RewardedVideoAd  mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(activity);
         mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener(){
@@ -151,7 +152,7 @@ public class MobssAds {
     }
 
     public AdLoader loadNativeAdsAppInstall(BaseActivity activity, ViewGroup view){
-        if (adUnitId == null) adUnitId = "ca-app-pub-3940256099942544/2247696110";
+        adUnitId = BuildConfig.ADMOB_NATIVE_AD_UNIT_ID;
 
         final AdLoader adLoader = new AdLoader.Builder(activity, adUnitId)
                 .forAppInstallAd(ad -> {
@@ -175,7 +176,7 @@ public class MobssAds {
     }
 
     public AdLoader loadNativeAdsContent(BaseActivity activity, ViewGroup view){
-        if (adUnitId == null) adUnitId = "ca-app-pub-3940256099942544/2247696110";
+        adUnitId = BuildConfig.ADMOB_NATIVE_AD_UNIT_ID;
 
         AdLoader adLoader = new AdLoader.Builder(activity, adUnitId)
                 .forContentAd(contentAd -> {
