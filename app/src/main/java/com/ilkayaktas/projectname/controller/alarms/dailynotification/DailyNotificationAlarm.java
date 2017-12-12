@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 
 import java.util.Calendar;
 
@@ -24,7 +25,9 @@ public class DailyNotificationAlarm {
 
     public void set(Calendar calendar){
         // Sets an alarm - note this alarm will be lost if the phone is turned off and on again
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_DAY,
+                AlarmManager.INTERVAL_DAY, pendingIntent);
     }
 
     public void cancel(){
