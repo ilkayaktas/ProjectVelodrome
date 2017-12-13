@@ -24,7 +24,6 @@ import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
-import com.ilkayaktas.projectname.views.activities.home.MainActivity;
 import com.ilkayaktas.projectname.views.adapters.ViewPagerAdapter;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
@@ -164,7 +163,7 @@ public class AppBarLayoutActivity extends BaseActivity implements AppBarLayoutMv
 	}
 
 	private void setFont(){
-		toolbarTitle.setTypeface(fontRobotoThin);
+		toolbarTitle.setTypeface(fontGothic);
 	}
 
 	@Override
