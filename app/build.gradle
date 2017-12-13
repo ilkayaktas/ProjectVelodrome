@@ -17,6 +17,16 @@ def getApiKey() {
 }
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'projectname'
+            keyPassword '21122784'
+            storeFile file('../projectname.jks')
+            storePassword '21122784'
+        }
+    }
+
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
