@@ -5,8 +5,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 import com.ilkayaktas.projectname.R;
@@ -37,7 +35,7 @@ public class MobssNotification {
         NotificationManager nm = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
 
         Intent intent = new Intent(context, invocationActivity);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 
         if(paramId != null){
             intent.putExtra("paramId", paramId);
@@ -49,9 +47,6 @@ public class MobssNotification {
                 .setSmallIcon(smallIcon)
                 .setContentIntent(contentIntent)
                 .setAutoCancel(true)
-                .setVibrate(new long[]{100, 300, 200})
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                .setLights(Color.BLUE,400,200)
                 .setOngoing(onGoing);
 
         if(remoteViews != null) {
