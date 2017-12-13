@@ -4,7 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.SystemClock;
+import android.util.Log;
 
 import java.util.Calendar;
 
@@ -13,6 +13,7 @@ import java.util.Calendar;
  */
 
 public class DailyNotificationAlarm {
+    private static final String TAG = "DailyNotificationAlarm";
     private AlarmManager alarmManager = null;
     private PendingIntent pendingIntent = null;
 
@@ -20,14 +21,20 @@ public class DailyNotificationAlarm {
         this.alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(context, MobssCustomNotificationService.class);
-        pendingIntent = PendingIntent.getService(context, 147411, intent, 0);
+        pendingIntent = PendingIntent.getService(context, 147411, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     public void set(Calendar calendar){
+
+        // alarm time is in past, set to next day
+        if(calendar.getTime().compareTo(Calendar.getInstance().getTime()) < 0){
+            calendar.setTimeInMillis( calendar.getTimeInMillis() + AlarmManager.INTERVAL_DAY);
+        }
+
         // Sets an alarm - note this alarm will be lost if the phone is turned off and on again
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_DAY,
-                AlarmManager.INTERVAL_DAY, pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+
+        Log.d(TAG, "Alarm is set: " + calendar.getTime().toString());
     }
 
     public void cancel(){

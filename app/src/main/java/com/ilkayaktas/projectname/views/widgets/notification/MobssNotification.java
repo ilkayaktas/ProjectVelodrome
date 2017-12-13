@@ -28,6 +28,7 @@ public class MobssNotification {
     public boolean onGoing = false;
     public int notificationId = -1;
     public RemoteViews remoteViews = null;
+    public Integer paramId = null;
     private Notification notification;
 
     public void showNotification() {
@@ -35,12 +36,17 @@ public class MobssNotification {
 
         Intent intent = new Intent(context, invocationActivity);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("message", message);
+
+        if(paramId != null){
+            intent.putExtra("paramId", paramId);
+        }
+
         PendingIntent contentIntent = PendingIntent.getActivity(context, generateRequestID(), intent, 0);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(smallIcon)
                 .setContentIntent(contentIntent)
+                .setAutoCancel(true)
                 .setOngoing(onGoing);
 
         if(remoteViews != null) {
