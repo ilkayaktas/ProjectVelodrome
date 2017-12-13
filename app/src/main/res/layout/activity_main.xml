@@ -76,7 +76,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ib_main_showrewadedads"
             android:background="@drawable/button_stroke_black"
-            android:text="Set Alarm To 1 Minute Later"/>
+            android:text="Set Alarm To 12:00"/>
 
     <TextView
             android:id="@+id/ib_main_openotheractivity"

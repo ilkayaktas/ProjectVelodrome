@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.util.Log;
 import com.ilkayaktas.projectname.controller.alarms.dailynotification.DailyNotificationAlarm;
 import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationTimerService;
-import com.ilkayaktas.projectname.utils.DateUtils;
-
-import java.util.Calendar;
 
 /**
  * Created by iaktas on 23.11.2017 at 08:13.
@@ -31,9 +28,6 @@ public class BootCompletedReceiver extends BroadcastReceiver{
     }
 
     private void setAlarm(Context context){
-        Calendar calendar = DateUtils.getCalendar(12, 0);
-
-        new DailyNotificationAlarm(context).set(calendar);
-
+        new DailyNotificationAlarm(context).setAt12();
     }
 }

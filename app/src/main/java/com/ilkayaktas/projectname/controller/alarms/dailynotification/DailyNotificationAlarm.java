@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import com.ilkayaktas.projectname.utils.DateUtils;
 
 import java.util.Calendar;
 
@@ -35,6 +36,102 @@ public class DailyNotificationAlarm {
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
         Log.d(TAG, "Alarm is set: " + calendar.getTime().toString());
+    }
+
+    public void setAt01(){
+        set(DateUtils.getCalendar(1,0));
+    }
+
+    public void setAt02(){
+        set(DateUtils.getCalendar(2,0));
+    }
+
+    public void setAt03(){
+        set(DateUtils.getCalendar(3,0));
+    }
+
+    public void setAt04(){
+        set(DateUtils.getCalendar(4,0));
+    }
+
+    public void setAt05(){
+        set(DateUtils.getCalendar(5,0));
+    }
+
+    public void setAt06(){
+        set(DateUtils.getCalendar(6,0));
+    }
+
+    public void setAt07(){
+        set(DateUtils.getCalendar(7,0));
+    }
+
+    public void setAt08(){
+        set(DateUtils.getCalendar(8,0));
+    }
+
+    public void setAt09(){
+        set(DateUtils.getCalendar(9,0));
+    }
+
+    public void setAt10(){
+        set(DateUtils.getCalendar(10,0));
+    }
+
+    public void setAt11(){
+        set(DateUtils.getCalendar(11,0));
+    }
+
+    public void setAt12(){
+        set(DateUtils.getCalendar(12,0));
+    }
+
+    public void setAt13(){
+        set(DateUtils.getCalendar(13,0));
+    }
+
+    public void setAt14(){
+        set(DateUtils.getCalendar(14,0));
+    }
+
+    public void setAt15(){
+        set(DateUtils.getCalendar(15,0));
+    }
+
+    public void setAt16(){
+        set(DateUtils.getCalendar(16,0));
+    }
+
+    public void setAt17(){
+        set(DateUtils.getCalendar(17,0));
+    }
+
+    public void setAt18(){
+        set(DateUtils.getCalendar(18,0));
+    }
+
+    public void setAt19(){
+        set(DateUtils.getCalendar(19,0));
+    }
+
+    public void setAt20(){
+        set(DateUtils.getCalendar(20,0));
+    }
+
+    public void setAt21(){
+        set(DateUtils.getCalendar(21,0));
+    }
+
+    public void setAt22(){
+        set(DateUtils.getCalendar(22,0));
+    }
+
+    public void setAt23(){
+        set(DateUtils.getCalendar(23,0));
+    }
+
+    public void setAt24(){
+        set(DateUtils.getCalendar(0,0));
     }
 
     public void cancel(){
