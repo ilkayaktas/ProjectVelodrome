@@ -32,11 +32,11 @@ android {
         debug {
             applicationIdSuffix ".debug"
 
+            buildConfigField "String", "ADMOB_APP_ID", "\"ca-app-pub-8425622277008316~9226494899\""
             resValue "string", "ADMOB_BANNER_AD_UNIT_ID", "\"/6499/example/banner\""
             buildConfigField "String", "ADMOB_BANNER_AD_UNIT_ID", "\"/6499/example/banner\""
             buildConfigField "String", "ADMOB_INTERSTITIAL_AD_UNIT_ID", "\"/6499/example/interstitial\""
             buildConfigField "String", "ADMOB_REWARDEDVIDEO_AD_UNIT_ID", "\"ca-app-pub-3940256099942544/5224354917\""
-            buildConfigField "String", "ADMOB_APP_ID", "\"ca-app-pub-8425622277008316~9226494899\""
             buildConfigField "String", "ADMOB_NATIVE_AD_UNIT_ID", "\"ca-app-pub-3940256099942544/2247696110\""
         }
         release {
@@ -46,11 +46,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
+            buildConfigField "String", "ADMOB_APP_ID", "\"ca-app-pub-8425622277008316~9226494899\""
             resValue "string", "ADMOB_BANNER_AD_UNIT_ID", "\"ca-app-pub-8425622277008316/603656823\""
             buildConfigField "String", "ADMOB_BANNER_AD_UNIT_ID", "\"ca-app-pub-8425622277008316/603656823\""
             buildConfigField "String", "ADMOB_INTERSTITIAL_AD_UNIT_ID", "\"ca-app-pub-8425622277008316/8201968080\""
             buildConfigField "String", "ADMOB_REWARDEDVIDEO_AD_UNIT_ID", "\"ca-app-pub-8425622277008316/9544584319\""
-            buildConfigField "String", "ADMOB_APP_ID", "\"ca-app-pub-8425622277008316~9226494899\""
             buildConfigField "String", "ADMOB_NATIVE_AD_UNIT_ID", "\"ca-app-pub-3940256099942544/2247696110\""
         }
 

@@ -2,23 +2,24 @@ package com.ilkayaktas.projectname.views.fragments.another;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import butterknife.ButterKnife;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.base.BaseFragment;
+import com.ilkayaktas.projectname.views.adapters.ViewPagerAdapter;
 
 import javax.inject.Inject;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by iaktas on 14.03.2017.
  */
 
-public class AnotherFragment extends BaseFragment implements AnotherFragmentMvpView {
+public class AnotherFragment extends BaseFragment implements AnotherFragmentMvpView, ViewPagerAdapter.OnUpdateFragment {
 
+    private static final String TAG = "AnotherFragment";
     @Inject
     AnotherFragmentMvpPresenter<AnotherFragmentMvpView> mPresenter;
 
@@ -59,4 +60,8 @@ public class AnotherFragment extends BaseFragment implements AnotherFragmentMvpV
         super.onDestroyView();
     }
 
+    @Override
+    public void updateFragment() {
+        Log.d(TAG, "updateFragment: Fragment is selected.");
+    }
 }

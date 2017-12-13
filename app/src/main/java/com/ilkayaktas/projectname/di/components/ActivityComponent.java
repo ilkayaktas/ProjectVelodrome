@@ -19,6 +19,7 @@ package com.ilkayaktas.projectname.di.components;
 import com.ilkayaktas.projectname.di.annotations.PerActivity;
 import com.ilkayaktas.projectname.di.modules.ActivityModule;
 import com.ilkayaktas.projectname.views.activities.another.AnotherActivity;
+import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutActivity;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.activities.home.MainActivity;
 import com.ilkayaktas.projectname.views.activities.splash.SplashScreenActivity;
@@ -43,4 +44,6 @@ public interface ActivityComponent {
     void inject(AnotherActivity activity);
 
     void inject(AnotherFragment fragment);
+
+    void inject(AppBarLayoutActivity activity);
 }

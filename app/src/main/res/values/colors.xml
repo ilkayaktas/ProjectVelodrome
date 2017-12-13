@@ -16,6 +16,8 @@
     <color name="mobss_color_primary_blue">#ff3a90dc</color>
     <color name="mobss_color_secondary_blue">#ff81a1a7</color>
 
+    <color name="mobss_appbarlayout">#00B246</color>
+
     <!--reds-->
     <color name="md_red_50">#FFEBEE</color>
     <color name="md_red_100">#FFCDD2</color>

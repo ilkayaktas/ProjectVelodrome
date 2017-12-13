@@ -36,7 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 	private Unbinder mUnBinder;
 
 	@Inject
-	public Typeface fontSkecth;
+	public Typeface fontRobotoThin;
 
 	@Inject
 	@ActivityContext
@@ -128,7 +128,7 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
 		TextView myActionBar = (TextView) findViewById(titleId);
 		if(myActionBar != null) {
 			myActionBar.setTextColor(Color.WHITE);
-			myActionBar.setTypeface(fontSkecth);
+			myActionBar.setTypeface(fontRobotoThin);
 			myActionBar.setTextSize(20);
 		}
 	}

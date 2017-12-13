@@ -2,7 +2,6 @@ package com.ilkayaktas.projectname.di.modules;
 
 import android.app.Activity;
 import android.graphics.Typeface;
-
 import com.ilkayaktas.projectname.controller.IDataManager;
 import com.ilkayaktas.projectname.controller.services.tasks.MobssAsyncTask;
 import com.ilkayaktas.projectname.controller.strategy.Strategy;
@@ -11,6 +10,9 @@ import com.ilkayaktas.projectname.di.annotations.PerActivity;
 import com.ilkayaktas.projectname.views.activities.another.AnotherMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.another.AnotherMvpView;
 import com.ilkayaktas.projectname.views.activities.another.AnotherPresenter;
+import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutMvpPresenter;
+import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutMvpView;
+import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutPresenter;
 import com.ilkayaktas.projectname.views.activities.home.MainMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.home.MainMvpView;
 import com.ilkayaktas.projectname.views.activities.home.MainPresenter;
@@ -20,7 +22,6 @@ import com.ilkayaktas.projectname.views.activities.splash.SplashScreenPresenter;
 import com.ilkayaktas.projectname.views.fragments.another.AnotherFragmentMvpPresenter;
 import com.ilkayaktas.projectname.views.fragments.another.AnotherFragmentMvpView;
 import com.ilkayaktas.projectname.views.fragments.another.AnotherFragmentPresenter;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -44,7 +45,7 @@ public class ActivityModule {
     @Provides
     @PerActivity
     Typeface provideTypeface() {
-        return Typeface.createFromAsset(activity.getAssets(), "fonts/Sketch.ttf");
+        return Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Thin.ttf");
     }
 
     @Provides
@@ -70,6 +71,12 @@ public class ActivityModule {
     @PerActivity
     AnotherMvpPresenter<AnotherMvpView> providesSlideUpPanelPresenter(IDataManager IDataManager) {
         return new AnotherPresenter<>(IDataManager);
+    }
+
+    @Provides
+    @PerActivity
+    AppBarLayoutMvpPresenter<AppBarLayoutMvpView> providesAppBarLayoutPresenter(IDataManager IDataManager) {
+        return new AppBarLayoutPresenter<>(IDataManager);
     }
 
     @Provides
