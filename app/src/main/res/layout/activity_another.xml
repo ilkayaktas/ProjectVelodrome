@@ -34,15 +34,13 @@
                         android:id="@+id/toolbar_mainicon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_marginStart="60dp"
                         android:background="@android:color/transparent"
                         android:layout_gravity="center"
                         app:srcCompat="@drawable/ic_launcher"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toLeftOf="@+id/toolbar_title"
-                        android:contentDescription="Launcher icon"/>
+                        android:contentDescription="Launcher icon" android:layout_margin="8dp"/>
                 <TextView
                         android:id="@+id/toolbar_title"
                         android:layout_width="0dp"
