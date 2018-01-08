@@ -74,6 +74,10 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -115,4 +119,8 @@ dependencies {
 
     // Toasty
     compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
+
+    // Requery
+    compile 'io.requery:requery-android:1.4.1' // for android
+    annotationProcessor 'io.requery:requery-processor:1.4.1'
 }

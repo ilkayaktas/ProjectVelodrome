@@ -16,6 +16,9 @@ import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutPres
 import com.ilkayaktas.projectname.views.activities.home.MainMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.home.MainMvpView;
 import com.ilkayaktas.projectname.views.activities.home.MainPresenter;
+import com.ilkayaktas.projectname.views.activities.recyclershowcase.RecyclerViewMvpPresenter;
+import com.ilkayaktas.projectname.views.activities.recyclershowcase.RecyclerViewMvpView;
+import com.ilkayaktas.projectname.views.activities.recyclershowcase.RecyclerViewPresenter;
 import com.ilkayaktas.projectname.views.activities.splash.SplashScreenMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.splash.SplashScreenMvpView;
 import com.ilkayaktas.projectname.views.activities.splash.SplashScreenPresenter;
@@ -84,6 +87,13 @@ public class ActivityModule {
     AnotherFragmentMvpPresenter<AnotherFragmentMvpView> providesAnotherMvpPresenter(IDataManager IDataManager) {
         return new AnotherFragmentPresenter<>(IDataManager);
     }
+
+    @Provides
+    @PerActivity
+    RecyclerViewMvpPresenter<RecyclerViewMvpView> providesRecyclerViewMvpPresenter(IDataManager IDataManager) {
+        return new RecyclerViewPresenter<>(IDataManager);
+    }
+
 
     @Provides
     @PerActivity
