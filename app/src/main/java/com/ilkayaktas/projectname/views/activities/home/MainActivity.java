@@ -163,11 +163,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 	@OnClick(R.id.ib_main_setalarm)
 	public void onSetAlarmButton(View view){
-		Calendar calendar = DateUtils.getCalendar(12, 0);
+		Calendar calendar = DateUtils.getCalendar(14, 15);
 
 		new DailyNotificationAlarm(this).set(calendar);
 
-		Log.d(TAG, "onSetAlarmButton: Alarm is set to " + calendar.getTime().toString());
 	}
 
 	@OnClick(R.id.ib_main_openotheractivity)

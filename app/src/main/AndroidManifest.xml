@@ -25,6 +25,11 @@
                   android:screenOrientation="portrait"
                   android:parentActivityName=".views.activities.home.MainActivity"> <!-- notofication support for Android 4.1 and later -->
             <!-- notofication support for Android 4.0.3 and lower.-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".views.activities.home.MainActivity"/>
@@ -49,11 +54,7 @@
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateHidden|adjustPan"
                 android:theme="@style/Theme.Design.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <receiver android:name=".controller.services.broadcastreceivers.BootCompletedReceiver">
