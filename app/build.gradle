@@ -1,9 +1,24 @@
 apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
-def gitTag = 'git describe --tags'.execute([], project.rootDir).text.trim()
-def gitCommitCount = 100 + Integer.parseInt(
-        'git rev-list --count HEAD'.execute([], project.rootDir).text.trim())
+def getTag(){
+    def tmpTag = 'git describe --tags'.execute([], project.rootDir).text.trim()
+    if(tmpTag == ""){
+        return '0.1'
+    }
+
+    return tmpTag
+}
+
+def getCommitCount(){
+    def tmpCommitCount = 'git rev-list --count HEAD'.execute([], project.rootDir).text.trim()
+
+    if(tmpCommitCount == ""){
+        return 100
+    }
+
+    return 100 + Integer.parseInt(tmpCommitCount)
+}
 
 def getApiKey() {
     def apiKeyFile = file('secret.properties')
@@ -33,8 +48,8 @@ android {
         applicationId "com.ilkayaktas.projectname"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode gitCommitCount
-        versionName gitTag
+        versionCode getCommitCount()
+        versionName getTag()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
     }
