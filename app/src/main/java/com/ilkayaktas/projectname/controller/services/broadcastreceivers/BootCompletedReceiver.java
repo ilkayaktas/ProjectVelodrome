@@ -16,9 +16,9 @@ public class BootCompletedReceiver extends BroadcastReceiver{
     public void onReceive(Context context, Intent ıntent) {
         Log.i("APPLICATION TEMPLATE", "onReceive: Boot is completed ");
 
-        startPeriodicService(context);
+//        startPeriodicService(context);
 
-        setAlarm(context);
+//        setAlarm(context);
     }
 
     private void startPeriodicService(Context context){
