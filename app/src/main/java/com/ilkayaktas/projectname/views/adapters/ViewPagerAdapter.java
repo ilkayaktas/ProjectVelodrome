@@ -29,6 +29,13 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     }
 
+    public ViewPagerAdapter(FragmentManager fm) {
+        super(fm);
+        this.fragmentManager = fm;
+        this.categories = null;
+        this.fragmentList = new ArrayList<>();
+    }
+
     private void initiateFragments(){
         for (String category : categories) {
             fragmentList.add(AnotherFragment.newInstance());
@@ -42,7 +49,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return categories.length;
+        return fragmentList.size();
+    }
+
+    public void addFragment(BaseFragment fragment) {
+        fragmentList.add(fragment);
     }
 
     @Override

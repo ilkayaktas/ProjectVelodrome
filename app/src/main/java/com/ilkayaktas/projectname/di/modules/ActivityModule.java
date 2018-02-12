@@ -13,6 +13,9 @@ import com.ilkayaktas.projectname.views.activities.another.AnotherPresenter;
 import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutMvpView;
 import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutPresenter;
+import com.ilkayaktas.projectname.views.activities.bottomnavigation.BottomNavigationMvpPresenter;
+import com.ilkayaktas.projectname.views.activities.bottomnavigation.BottomNavigationMvpView;
+import com.ilkayaktas.projectname.views.activities.bottomnavigation.BottomNavigationPresenter;
 import com.ilkayaktas.projectname.views.activities.home.MainMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.home.MainMvpView;
 import com.ilkayaktas.projectname.views.activities.home.MainPresenter;
@@ -92,6 +95,12 @@ public class ActivityModule {
     @PerActivity
     RecyclerViewMvpPresenter<RecyclerViewMvpView> providesRecyclerViewMvpPresenter(IDataManager IDataManager) {
         return new RecyclerViewPresenter<>(IDataManager);
+    }
+
+    @Provides
+    @PerActivity
+    BottomNavigationMvpPresenter<BottomNavigationMvpView> providesBottomNavigationMvpPresenter(IDataManager IDataManager) {
+        return new BottomNavigationPresenter<>(IDataManager);
     }
 
 

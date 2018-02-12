@@ -21,11 +21,11 @@ import com.ilkayaktas.projectname.di.modules.ActivityModule;
 import com.ilkayaktas.projectname.views.activities.another.AnotherActivity;
 import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutActivity;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
+import com.ilkayaktas.projectname.views.activities.bottomnavigation.BottomNavigationActivity;
 import com.ilkayaktas.projectname.views.activities.home.MainActivity;
 import com.ilkayaktas.projectname.views.activities.recyclershowcase.RecyclerViewActivity;
 import com.ilkayaktas.projectname.views.activities.splash.SplashScreenActivity;
 import com.ilkayaktas.projectname.views.fragments.another.AnotherFragment;
-
 import dagger.Component;
 
 /**
@@ -49,4 +49,6 @@ public interface ActivityComponent {
     void inject(AppBarLayoutActivity activity);
 
     void inject(RecyclerViewActivity activity);
+
+    void inject(BottomNavigationActivity activity);
 }
