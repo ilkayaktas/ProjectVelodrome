@@ -7,6 +7,9 @@ import com.ilkayaktas.projectname.controller.services.tasks.MobssAsyncTask;
 import com.ilkayaktas.projectname.controller.strategy.Strategy;
 import com.ilkayaktas.projectname.di.annotations.ActivityContext;
 import com.ilkayaktas.projectname.di.annotations.PerActivity;
+import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcaseMvpPresenter;
+import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcaseMvpView;
+import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcasePresenter;
 import com.ilkayaktas.projectname.views.activities.another.AnotherMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.another.AnotherMvpView;
 import com.ilkayaktas.projectname.views.activities.another.AnotherPresenter;
@@ -101,6 +104,12 @@ public class ActivityModule {
     @PerActivity
     BottomNavigationMvpPresenter<BottomNavigationMvpView> providesBottomNavigationMvpPresenter(IDataManager IDataManager) {
         return new BottomNavigationPresenter<>(IDataManager);
+    }
+
+    @Provides
+    @PerActivity
+    AdsShowcaseMvpPresenter<AdsShowcaseMvpView> providesAdsShowcaseMvpPresenter(IDataManager IDataManager) {
+        return new AdsShowcasePresenter<>(IDataManager);
     }
 
 
