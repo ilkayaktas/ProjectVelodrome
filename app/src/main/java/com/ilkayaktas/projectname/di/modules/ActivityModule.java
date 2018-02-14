@@ -10,6 +10,9 @@ import com.ilkayaktas.projectname.di.annotations.PerActivity;
 import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcaseMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcaseMvpView;
 import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcasePresenter;
+import com.ilkayaktas.projectname.views.activities.animations.AnimationMvpPresenter;
+import com.ilkayaktas.projectname.views.activities.animations.AnimationMvpView;
+import com.ilkayaktas.projectname.views.activities.animations.AnimationPresenter;
 import com.ilkayaktas.projectname.views.activities.another.AnotherMvpPresenter;
 import com.ilkayaktas.projectname.views.activities.another.AnotherMvpView;
 import com.ilkayaktas.projectname.views.activities.another.AnotherPresenter;
@@ -110,6 +113,12 @@ public class ActivityModule {
     @PerActivity
     AdsShowcaseMvpPresenter<AdsShowcaseMvpView> providesAdsShowcaseMvpPresenter(IDataManager IDataManager) {
         return new AdsShowcasePresenter<>(IDataManager);
+    }
+
+    @Provides
+    @PerActivity
+    AnimationMvpPresenter<AnimationMvpView> providesAnimationMvpPresenter(IDataManager IDataManager) {
+        return new AnimationPresenter<>(IDataManager);
     }
 
 

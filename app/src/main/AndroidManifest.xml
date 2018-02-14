@@ -71,6 +71,12 @@
                 android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
 
+        <activity
+                android:name=".views.activities.animations.AnimationActivity"
+                android:screenOrientation="portrait"
+                android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+
         <receiver android:name=".controller.services.broadcastreceivers.BootCompletedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>

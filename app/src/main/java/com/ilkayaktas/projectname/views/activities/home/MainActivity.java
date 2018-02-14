@@ -9,6 +9,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcaseActivity;
+import com.ilkayaktas.projectname.views.activities.animations.AnimationActivity;
 import com.ilkayaktas.projectname.views.activities.another.AnotherActivity;
 import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutActivity;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
@@ -117,4 +118,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		startActivity(RecyclerViewActivity.class);
 	}
 
+	@OnClick(R.id.button7)
+	public void onButton7Clicked(View v){
+		startActivity(AnimationActivity.class);
+	}
 }

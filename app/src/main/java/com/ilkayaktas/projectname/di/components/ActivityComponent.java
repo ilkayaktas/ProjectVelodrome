@@ -19,6 +19,7 @@ package com.ilkayaktas.projectname.di.components;
 import com.ilkayaktas.projectname.di.annotations.PerActivity;
 import com.ilkayaktas.projectname.di.modules.ActivityModule;
 import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcaseActivity;
+import com.ilkayaktas.projectname.views.activities.animations.AnimationActivity;
 import com.ilkayaktas.projectname.views.activities.another.AnotherActivity;
 import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutActivity;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
@@ -54,4 +55,6 @@ public interface ActivityComponent {
     void inject(BottomNavigationActivity activity);
 
     void inject(AdsShowcaseActivity activity);
+
+    void inject(AnimationActivity activity);
 }
