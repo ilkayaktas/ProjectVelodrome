@@ -42,12 +42,12 @@ android {
     }
 
 
-    compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
+    compileSdkVersion 27
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.ilkayaktas.projectname"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion 19
+        targetSdkVersion 27
         versionCode getCommitCount()
         versionName getTag()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
