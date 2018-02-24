@@ -52,6 +52,7 @@ android {
         versionName getTag()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         android.defaultConfig.vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
     }
     buildTypes {
         debug {
@@ -122,6 +123,9 @@ dependencies {
         exclude group: 'com.google.code.findbugs'
     })
 
+    // Multidex
+    compile "com.android.support:multidex:$rootProject.multidexVersion"
+
     // Dagger
     compile "com.google.dagger:dagger:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
@@ -142,8 +146,6 @@ dependencies {
 
     // Requery
     compile "io.requery:requery-android:$rootProject.requeryVersion"
-
-    // for android
     annotationProcessor "io.requery:requery-processor:$rootProject.requeryVersion"
 
     // RXJava

@@ -1,6 +1,8 @@
 package com.ilkayaktas.projectname;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 import com.google.android.gms.ads.MobileAds;
 import com.ilkayaktas.projectname.controller.IDataManager;
 import com.ilkayaktas.projectname.di.components.ApplicationComponent;
@@ -41,5 +43,10 @@ public class App extends Application {
 	public ApplicationComponent getAppComponent(){
 		return appComponent;
 	}
-	
+
+	@Override
+	protected void attachBaseContext(Context base) {
+		super.attachBaseContext(base);
+		MultiDex.install(this);
+	}
 }
