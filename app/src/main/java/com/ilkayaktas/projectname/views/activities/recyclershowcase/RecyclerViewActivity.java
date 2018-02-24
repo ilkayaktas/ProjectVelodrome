@@ -23,7 +23,7 @@ import java.util.Arrays;
  */
 
 public class RecyclerViewActivity extends BaseActivity implements RecyclerViewMvpView {
-	
+
 	@Inject
 	RecyclerViewMvpPresenter<RecyclerViewMvpView> mPresenter;
 
@@ -38,9 +38,9 @@ public class RecyclerViewActivity extends BaseActivity implements RecyclerViewMv
 		super.onCreate(savedInstanceState);
 
 		getActivityComponent().inject(this);
-		
+
 		setUnBinder(ButterKnife.bind(this));
-		
+
 		// Attach presenter
 		mPresenter.onAttach(RecyclerViewActivity.this);
 
@@ -59,7 +59,7 @@ public class RecyclerViewActivity extends BaseActivity implements RecyclerViewMv
 
 	private void initRecylerView(){
 
-		recyclerViewAdapter = new RecyclerViewAdapter(this, Arrays.asList("One", "Two", "Three"));
+		recyclerViewAdapter = new RecyclerViewAdapter(this, Arrays.asList("One", "Two", "Three"), recyclerView);
 
 		RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
 		recyclerView.setLayoutManager(mLayoutManager);
@@ -77,13 +77,13 @@ public class RecyclerViewActivity extends BaseActivity implements RecyclerViewMv
 		mPresenter.onDetach();
 		super.onDestroy();
 	}
-	
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-			
+
 			finish();
-			
+
 			return true;
 		} else {
 			return super.onKeyDown(keyCode, event);

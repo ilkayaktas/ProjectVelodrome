@@ -35,19 +35,19 @@ android {
     signingConfigs {
         config {
             keyAlias 'projectname'
-            keyPassword '21122784'
+            keyPassword '12345678'
             storeFile file('../projectname.jks')
-            storePassword '21122784'
+            storePassword '12345678'
         }
     }
 
 
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
         applicationId "com.ilkayaktas.projectname"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode getCommitCount()
         versionName getTag()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -84,28 +84,33 @@ android {
             variant -> variant.buildConfigField "String", "API_KEY", "\"" + getApiKey() + "\""
         }
     }
-
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
-
     dataBinding {
         enabled = true
+    }
+    productFlavors {
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(path: ':annotationprocessing')
     annotationProcessor project(':annotationprocessing')
 
     // Appcompat and Constraint Layout
     compile "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support.constraint:constraint-layout:$rootProject.constraintsLibraryVersion" // Constraints layout
-    compile "com.android.support:design:$rootProject.supportLibraryVersion" // snackbar
-    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion" // Cardview
+    compile "com.android.support.constraint:constraint-layout:$rootProject.constraintsLibraryVersion"
+
+    // Constraints layout
+    compile "com.android.support:design:$rootProject.supportLibraryVersion"
+
+    // snackbar
+    compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+
+    // Cardview
 
     // Ads
     compile "com.google.android.gms:play-services-ads:$rootProject.adsVersion"
@@ -136,10 +141,12 @@ dependencies {
     compile "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
 
     // Requery
-    compile 'io.requery:requery-android:1.4.1' // for android
-    annotationProcessor 'io.requery:requery-processor:1.4.1'
+    compile "io.requery:requery-android:$rootProject.requeryVersion"
+
+    // for android
+    annotationProcessor "io.requery:requery-processor:$rootProject.requeryVersion"
 
     // RXJava
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.6'
+    compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
+    compile "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
 }

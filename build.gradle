@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath "io.realm:realm-gradle-plugin:3.1.3"
+        classpath "io.realm:realm-gradle-plugin:4.2.0"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -37,12 +37,12 @@ ext {
     compileSdkVersion = 27
     buildToolsVersion = '26.0.2'
 
-    // Ads
-    adsVersion = "11.6.0"
-
     // App dependencies
-    supportLibraryVersion = '27.0.1'
+    supportLibraryVersion = '27.0.2'
     constraintsLibraryVersion = '1.0.2'
+
+    // Ads
+    adsVersion = "11.8.0"
 
     //Test dependencies
     junitVersion = '4.12'
@@ -62,4 +62,11 @@ ext {
 
     // Toasty
     toastyVersion = "1.2.5"
+
+    // Requery
+    requeryVersion = "1.4.1"
+
+    // RxJava
+    rxJavaVersion = "2.1.6"
+    rxAndroidVersion = "2.0.1"
 }

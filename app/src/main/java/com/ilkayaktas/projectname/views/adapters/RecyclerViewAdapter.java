@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.ilkayaktas.projectname.R;
@@ -19,6 +19,7 @@ import java.util.List;
  * Created by iaktas on 26.05.2017.
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+    private RecyclerView rv;
     private BaseActivity activity;
     private List<String> cardContentList;
 
@@ -27,9 +28,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.cardContentList = new ArrayList<>();
     }
 
-    public RecyclerViewAdapter(BaseActivity activity, List<String> cardContentList) {
+    public RecyclerViewAdapter(BaseActivity activity, List<String> cardContentList, RecyclerView rv) {
         this.activity = activity;
         this.cardContentList = cardContentList;
+        this.rv = rv;
     }
 
     @Override
@@ -49,15 +51,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.cardContent.setText(text);
         viewHolder.cardContent.setTypeface(activity.fontGothic);
 
-        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+        viewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(activity, "Card clicked. Index : " + position, Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                rv.removeView(viewHolder.cardView);
             }
         });
 
     }
-    
+
     @Override
     public int getItemCount() {
         return cardContentList.size();
@@ -66,6 +68,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.cv_recycler_card) CardView cardView;
         @BindView(R.id.tv_recycler_cardcontent) TextView cardContent;
+        @BindView(R.id.b_recycler_button) Button button;
 
         public ViewHolder(View view){
             super(view);
