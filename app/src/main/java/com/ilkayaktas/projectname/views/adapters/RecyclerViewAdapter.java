@@ -1,11 +1,14 @@
 package com.ilkayaktas.projectname.views.adapters;
 
+import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,10 +54,83 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.cardContent.setText(text);
         viewHolder.cardContent.setTypeface(activity.fontGothic);
 
-        viewHolder.button.setOnClickListener(new View.OnClickListener() {
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rv.removeView(viewHolder.cardView);
+
+                int cardHeight = viewHolder.cardView.getHeight();
+                int messageContentHeight = viewHolder.button.getHeight();
+                int messageContentMargins = ((LinearLayout.LayoutParams)viewHolder.button.getLayoutParams()).bottomMargin +
+                        ((LinearLayout.LayoutParams)viewHolder.button.getLayoutParams()).topMargin;
+
+                if(viewHolder.button.getVisibility() == View.VISIBLE){
+                    ValueAnimator anim = ValueAnimator.ofInt(cardHeight, cardHeight-messageContentHeight-messageContentMargins);
+                    anim.addUpdateListener(valueAnimator -> {
+                        int val = (Integer) valueAnimator.getAnimatedValue();
+
+                        ViewGroup.LayoutParams layoutParams = viewHolder.cardView.getLayoutParams();
+                        layoutParams.height = val;
+                        viewHolder.cardView.setLayoutParams(layoutParams);
+                    });
+
+                    anim.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animator) {
+                            viewHolder.button.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animator) {
+
+                        }
+                    });
+                    anim.setDuration(300);
+                    anim.start();
+                } else{
+                    ValueAnimator anim = ValueAnimator.ofInt(cardHeight, cardHeight+messageContentHeight+messageContentMargins);
+                    anim.addUpdateListener(valueAnimator -> {
+                        int val = (Integer) valueAnimator.getAnimatedValue();
+
+                        ViewGroup.LayoutParams layoutParams = viewHolder.cardView.getLayoutParams();
+                        layoutParams.height = val;
+                        viewHolder.cardView.setLayoutParams(layoutParams);
+                    });
+
+                    anim.addListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animator) {
+                            viewHolder.button.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animator) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animator) {
+
+                        }
+                    });
+                    anim.setDuration(300);
+                    anim.start();
+                }
+
             }
         });
 

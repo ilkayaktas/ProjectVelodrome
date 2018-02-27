@@ -1,8 +1,6 @@
 package com.ilkayaktas.projectname.views.activities.animations;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
+import android.animation.*;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -33,6 +31,7 @@ public class AnimationActivity extends BaseActivity implements AnimationMvpView 
 	@BindView(R.id.button2) Button button2;
 	@BindView(R.id.button3) Button button3;
 	@BindView(R.id.button4) Button button4;
+	@BindView(R.id.button5) Button button5;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -125,9 +124,9 @@ public class AnimationActivity extends BaseActivity implements AnimationMvpView 
 
 	@OnClick(R.id.button3)
 	public void onButton3Clicked(View v){
-		button3.animate().
-				setInterpolator(new AnticipateOvershootInterpolator())
-				.setDuration(800)
+			button3.animate().
+					setInterpolator(new AnticipateOvershootInterpolator())
+					.setDuration(800)
 				.x(300)
 				.rotation(30f)
 				.translationX(40f);
@@ -136,7 +135,24 @@ public class AnimationActivity extends BaseActivity implements AnimationMvpView 
 
 	@OnClick(R.id.button4)
 	public void onButton4Clicked(View v){
-
+		AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
+				R.animator.property_animator);
+		set.setTarget(v);
+		set.start();
 	}
 
+	@OnClick(R.id.button5)
+	public void onButton5Clicked(View v){
+		ValueAnimator xmlAnimator = (ValueAnimator) AnimatorInflater.loadAnimator(this,
+				R.animator.animator);
+		xmlAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+			@Override
+			public void onAnimationUpdate(ValueAnimator updatedAnimation) {
+				float animatedValue = (float)updatedAnimation.getAnimatedValue();
+				v.setTranslationX(animatedValue);
+			}
+		});
+
+		xmlAnimator.start();
+	}
 }
