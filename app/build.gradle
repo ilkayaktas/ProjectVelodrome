@@ -151,4 +151,7 @@ dependencies {
     // RXJava
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     compile "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+
+    // ViewPropertyObjectAnimator
+    compile "com.bartoszlipinski:viewpropertyobjectanimator:$rootProject.viewPropertyObjectAnimatorVersion"
 }

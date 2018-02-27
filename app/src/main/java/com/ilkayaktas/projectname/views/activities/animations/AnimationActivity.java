@@ -4,15 +4,13 @@ import android.animation.*;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnticipateOvershootInterpolator;
-import android.view.animation.BounceInterpolator;
+import android.view.animation.*;
 import android.widget.Button;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.bartoszlipinski.viewpropertyobjectanimator.ViewPropertyObjectAnimator;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 
@@ -135,10 +133,45 @@ public class AnimationActivity extends BaseActivity implements AnimationMvpView 
 
 	@OnClick(R.id.button4)
 	public void onButton4Clicked(View v){
-		AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
+		/*AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(this,
 				R.animator.property_animator);
 		set.setTarget(v);
-		set.start();
+		set.start();*/
+		ViewPropertyObjectAnimator
+				.animate(v)
+				.withLayer()
+				.alpha(0f)
+				.scaleX(0f)
+				.scaleY(0f)
+				.scrollX(0)
+				.scrollY(0)
+				.height(0)
+				.topPaddingBy(0)
+				.setDuration(1000)
+				.setInterpolator(new AnticipateInterpolator())
+				.addListener(new Animator.AnimatorListener() {
+					@Override
+					public void onAnimationStart(Animator animation) {
+						
+					}
+
+					@Override
+					public void onAnimationEnd(Animator animation) {
+						v.setVisibility(View.GONE);
+					}
+
+					@Override
+					public void onAnimationCancel(Animator animation) {
+
+					}
+
+					@Override
+					public void onAnimationRepeat(Animator animation) {
+
+					}
+				})
+				.get()
+				.start();
 	}
 
 	@OnClick(R.id.button5)

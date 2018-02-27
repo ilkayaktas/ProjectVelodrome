@@ -65,4 +65,7 @@ ext {
     // RxJava
     rxJavaVersion = '2.1.6'
     rxAndroidVersion = '2.0.1'
+
+    // ViewPropertyObjectAnimator
+    viewPropertyObjectAnimatorVersion = '1.4.5'
 }
