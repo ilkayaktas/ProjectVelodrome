@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Spinner;
+import android.widget.Toast;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.ilkayaktas.projectname.R;
+import com.ilkayaktas.projectname.model.app.Dummy;
 import com.ilkayaktas.projectname.views.activities.adsshowcase.AdsShowcaseActivity;
 import com.ilkayaktas.projectname.views.activities.animations.AnimationActivity;
 import com.ilkayaktas.projectname.views.activities.another.AnotherActivity;
@@ -16,10 +20,12 @@ import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutActi
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.activities.bottomnavigation.BottomNavigationActivity;
 import com.ilkayaktas.projectname.views.activities.recyclershowcase.RecyclerViewActivity;
+import com.ilkayaktas.projectname.views.adapters.CustomSpinnerAdapter;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements MainMvpView {
 
@@ -27,6 +33,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
 	@Inject
 	MainMvpPresenter<MainMvpView> mPresenter;
+
+	@BindView(R.id.spinner) Spinner spinner;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@Override
 	protected void initUI() {
 		Log.d(TAG, "initUI: ");
+		CustomSpinnerAdapter userAdapter = new CustomSpinnerAdapter(this, android.R.layout.simple_spinner_item, new ArrayList<>());
+		userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		userAdapter.add(new Dummy("Michael","Jackson"));
+		userAdapter.add(new Dummy("David","Gilmour"));
+		userAdapter.add(new Dummy("Rick","Wright"));
+		spinner.setAdapter(userAdapter);
 	}
 
 	@Override
@@ -114,7 +128,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		startActivity(AppBarLayoutActivity.class);
 	}
 
-
 	@OnClick(R.id.button5)
 	public void onButton5Clicked(View v){
 		startActivity(BottomNavigationActivity.class);
@@ -128,5 +141,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@OnClick(R.id.button7)
 	public void onButton7Clicked(View v){
 		startActivity(AnimationActivity.class);
+	}
+
+	@OnClick(R.id.button8)
+	public void onButton8Cliked(View v){
+		Toast.makeText(this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
 	}
 }

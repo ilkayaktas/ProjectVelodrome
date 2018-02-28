@@ -15,7 +15,7 @@ import java.util.List;
  * Created by aselsan on 14.02.2018 at 08:22.
  */
 
-public class CustomSpinnerAdapter extends ArrayAdapter {
+public class CustomSpinnerAdapter extends ArrayAdapter<Dummy> {
     private Context context;
     private List<Dummy> streams;
     private int resource;
@@ -54,7 +54,7 @@ public class CustomSpinnerAdapter extends ArrayAdapter {
                                 ViewGroup parent) {
         TextView spinner = (TextView) ((AppCompatActivity)context).getLayoutInflater().inflate(resource, null);
         spinner.setText(getItem(position).name);
-        spinner.setPadding(30,20,10,20);
+        spinner.setPadding(30,30,30,30);
         return spinner;
     }
 }

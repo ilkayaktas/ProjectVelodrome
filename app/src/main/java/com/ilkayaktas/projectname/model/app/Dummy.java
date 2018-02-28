@@ -7,4 +7,14 @@ package com.ilkayaktas.projectname.model.app;
 public class Dummy {
     public String name;
     public String surname;
+
+    public Dummy(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 }

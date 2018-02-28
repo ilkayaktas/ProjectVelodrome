@@ -2,7 +2,6 @@ package com.ilkayaktas.projectname.views.activities.another;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,6 +12,7 @@ import javax.inject.Inject;
 
 /**
  * Created by ilkay on 02/08/2017.
+ * TODO: DO NOT EDIT THIS CLASS SINCE THIS IS A TEMPLATE CLASS.
  */
 
 public class AnotherActivity extends BaseActivity implements AnotherMvpView {
@@ -21,7 +21,6 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 	AnotherMvpPresenter<AnotherMvpView> mPresenter;
 
 	@BindView(R.id.toolbar_title) TextView toolbarTitle;
-	@BindView(R.id.spinner) Spinner spinner;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
