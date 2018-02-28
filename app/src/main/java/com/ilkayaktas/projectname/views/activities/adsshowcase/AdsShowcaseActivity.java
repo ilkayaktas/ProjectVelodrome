@@ -55,12 +55,19 @@ public class AdsShowcaseActivity extends BaseActivity implements AdsShowcaseMvpV
 		// Attach presenter
 		mPresenter.onAttach(AdsShowcaseActivity.this);
 
-		loadAds();
+		initUI();
 	}
 
 	@Override
 	protected int getActivityLayout() {
 		return R.layout.activity_showcase;
+	}
+
+	@Override
+	protected void initUI() {
+		Log.d(TAG, "initUI: ");
+
+		loadAds();
 	}
 
 	@Override

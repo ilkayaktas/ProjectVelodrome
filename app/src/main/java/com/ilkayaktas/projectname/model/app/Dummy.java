@@ -5,4 +5,6 @@ package com.ilkayaktas.projectname.model.app;
  */
 
 public class Dummy {
+    public String name;
+    public String surname;
 }

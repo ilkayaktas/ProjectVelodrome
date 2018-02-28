@@ -47,7 +47,8 @@ public class RecyclerViewActivity extends BaseActivity implements RecyclerViewMv
 		initUI();
 	}
 
-	private void initUI() {
+	@Override
+	protected void initUI() {
 		setFont();
 
 		initRecylerView();

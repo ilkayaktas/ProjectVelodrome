@@ -63,16 +63,17 @@ public class AppBarLayoutActivity extends BaseActivity implements AppBarLayoutMv
 		mPresenter.onAttach(AppBarLayoutActivity.this);
 
 		initUI();
+	}
+
+	@Override
+	protected void initUI(){
+		setFont();
+		setOnFavoritesClickAction();
+		setOnMainIconClickAction();
 
 		initTabs();
 
 		loadAds();
-	}
-
-	private void initUI(){
-		setFont();
-		setOnFavoritesClickAction();
-		setOnMainIconClickAction();
 	}
 
 	private void initTabs(){
@@ -141,19 +142,19 @@ public class AppBarLayoutActivity extends BaseActivity implements AppBarLayoutMv
 	@Override
 	protected void onDestroy() {
 		mPresenter.onDetach();
-		rewardedVideoAd.destroy(this);
+		if(rewardedVideoAd != null) rewardedVideoAd.destroy(this);
 		super.onDestroy();
 	}
 
 	@Override
 	protected void onResume() {
-		rewardedVideoAd.resume(this);
+        if(rewardedVideoAd != null) rewardedVideoAd.resume(this);
 		super.onResume();
 	}
 
 	@Override
 	protected void onPause() {
-		rewardedVideoAd.pause(this);
+		if(rewardedVideoAd != null) rewardedVideoAd.pause(this);
 		super.onPause();
 	}
 

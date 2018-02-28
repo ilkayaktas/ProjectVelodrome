@@ -40,14 +40,19 @@ public class BottomNavigationActivity extends BaseActivity implements BottomNavi
 		// Attach presenter
 		mPresenter.onAttach(BottomNavigationActivity.this);
 
-		setupViewPager();
-		setViewPagerListener();
-		setBottomNavitionViewListener();
+		initUI();
 	}
 
 	@Override
 	protected int getActivityLayout() {
 		return R.layout.activity_bottomnavigation;
+	}
+
+	@Override
+	protected void initUI() {
+		setupViewPager();
+		setViewPagerListener();
+		setBottomNavitionViewListener();
 	}
 
 	@Override

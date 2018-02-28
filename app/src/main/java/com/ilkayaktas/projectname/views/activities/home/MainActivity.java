@@ -3,6 +3,7 @@ package com.ilkayaktas.projectname.views.activities.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import butterknife.ButterKnife;
@@ -40,11 +41,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		// Attach presenter
 		mPresenter.onAttach(MainActivity.this);
 
+		initUI();
 	}
 
 	@Override
 	protected int getActivityLayout() {
 		return R.layout.activity_main;
+	}
+
+	@Override
+	protected void initUI() {
+		Log.d(TAG, "initUI: ");
 	}
 
 	@Override

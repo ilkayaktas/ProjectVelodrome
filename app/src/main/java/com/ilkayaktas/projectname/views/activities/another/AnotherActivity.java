@@ -2,6 +2,7 @@ package com.ilkayaktas.projectname.views.activities.another;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,8 +20,8 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 	@Inject
 	AnotherMvpPresenter<AnotherMvpView> mPresenter;
 
-	@BindView(R.id.toolbar_title)
-	TextView toolbarTitle;
+	@BindView(R.id.toolbar_title) TextView toolbarTitle;
+	@BindView(R.id.spinner) Spinner spinner;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +34,17 @@ public class AnotherActivity extends BaseActivity implements AnotherMvpView {
 		// Attach presenter
 		mPresenter.onAttach(AnotherActivity.this);
 
-		setFont();
+		initUI();
 	}
 
 	@Override
 	protected int getActivityLayout() {
 		return R.layout.activity_another;
+	}
+
+	@Override
+	protected void initUI() {
+		setFont();
 	}
 
 	@Override

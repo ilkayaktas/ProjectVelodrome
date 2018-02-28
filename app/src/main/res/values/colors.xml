@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/md_light_blue_500</color>
-    <color name="colorPrimaryDark">@color/md_light_blue_700</color>
+    <color name="colorPrimary">@color/mobss_color_blue</color>
+    <color name="colorPrimaryDark">@color/mobss_color_primary_blue</color>
     <color name="colorAccent">#FF4081</color>
 
     <color name="mobss_color_white">#ffffff</color>
@@ -13,7 +13,7 @@
     <color name="mobss_color_red">#e74c3c</color>
     <color name="mobss_color_green">#27ae60</color>
     <color name="mobss_color_blue">@color/md_light_blue_500</color>
-    <color name="mobss_color_primary_blue">#ff3a90dc</color>
+    <color name="mobss_color_primary_blue">#008FD7</color>
     <color name="mobss_color_secondary_blue">#ff81a1a7</color>
 
     <color name="mobss_appbarlayout">#D77FA3</color>

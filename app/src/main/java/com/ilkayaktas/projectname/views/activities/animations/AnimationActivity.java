@@ -2,6 +2,7 @@ package com.ilkayaktas.projectname.views.activities.animations;
 
 import android.animation.*;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.*;
@@ -21,7 +22,8 @@ import javax.inject.Inject;
  */
 
 public class AnimationActivity extends BaseActivity implements AnimationMvpView {
-	
+
+	private static final String TAG = "AnimationActivity";
 	@Inject
 	AnimationMvpPresenter<AnimationMvpView> mPresenter;
 
@@ -42,11 +44,17 @@ public class AnimationActivity extends BaseActivity implements AnimationMvpView 
 		// Attach presenter
 		mPresenter.onAttach(AnimationActivity.this);
 
+		initUI();
 	}
 
 	@Override
 	protected int getActivityLayout() {
 		return R.layout.activity_animation;
+	}
+
+	@Override
+	protected void initUI() {
+		Log.d(TAG, "initUI: ");
 	}
 
 	@Override

@@ -4,15 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.activities.home.MainActivity;
 
 import javax.inject.Inject;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 /**
@@ -38,15 +36,20 @@ public class SplashScreenActivity extends BaseActivity implements SplashScreenMv
 		setUnBinder(ButterKnife.bind(this));
 		
 		mPresenter.onAttach(SplashScreenActivity.this);
-		
-		changeUIFonts();
-		
-		startHandler();
+
+		initUI();
 	}
 
 	@Override
 	protected int getActivityLayout() {
 		return R.layout.activity_splashscreen;
+	}
+
+	@Override
+	protected void initUI() {
+		changeUIFonts();
+
+		startHandler();
 	}
 
 	private void startHandler() {
