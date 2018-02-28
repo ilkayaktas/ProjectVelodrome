@@ -21,6 +21,7 @@ import com.ilkayaktas.projectname.views.activities.appbarlayout.AppBarLayoutActi
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.activities.bottomnavigation.BottomNavigationActivity;
 import com.ilkayaktas.projectname.views.activities.recyclershowcase.RecyclerViewActivity;
+import com.ilkayaktas.projectname.views.activities.settings.SettingsActivity;
 import com.ilkayaktas.projectname.views.adapters.CustomSpinnerAdapter;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.RateMe;
@@ -153,5 +154,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@OnClick(R.id.button8)
 	public void onButton8Cliked(View v){
 		Toast.makeText(this, spinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+	}
+
+	@OnClick(R.id.toolbar_settings)
+	public void onSettingsClicked(View v){
+		startActivity(SettingsActivity.class);
 	}
 }

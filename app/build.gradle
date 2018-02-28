@@ -108,7 +108,10 @@ dependencies {
     // Constraints layout
     compile "com.android.support:design:$rootProject.supportLibraryVersion"
 
-    // snackbar
+    // Preference
+    compile "com.android.support:preference-v7:$rootProject.supportLibraryVersion"
+
+    // Snackbar
     compile "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
 
     // Cardview

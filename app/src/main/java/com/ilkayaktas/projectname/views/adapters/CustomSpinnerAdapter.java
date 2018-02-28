@@ -12,7 +12,7 @@ import com.ilkayaktas.projectname.model.app.Dummy;
 import java.util.List;
 
 /**
- * Created by aselsan on 14.02.2018 at 08:22.
+ * Created by ilkayaktas on 14.02.2018 at 08:22.
  */
 
 public class CustomSpinnerAdapter extends ArrayAdapter<Dummy> {
