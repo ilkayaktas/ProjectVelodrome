@@ -6,8 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="1dp"
-        android:background="@color/mobss_appbarlayout_secondary"
+        android:layout_margin="5dp"
+        android:background="@color/mobss_color_blue"
         android:animateLayoutChanges="true"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">

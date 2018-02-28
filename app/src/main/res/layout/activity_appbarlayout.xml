@@ -20,7 +20,7 @@
                 android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/mobss_appbarlayout"
+                android:background="@color/mobss_color_primary_blue"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -77,9 +77,9 @@
                 android:id="@+id/tablayout_main"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:tabTextColor="@color/mobss_color_dark_gray"
+                app:tabTextColor="@color/mobss_color_light_gray"
                 app:tabSelectedTextColor="@color/mobss_color_white"
-                android:background="@color/mobss_appbarlayout"
+                android:background="@color/mobss_color_primary_blue"
                 app:layout_scrollFlags="snap|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 app:tabMode="scrollable"/>
@@ -91,7 +91,6 @@
             android:id="@+id/vp_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/mobss_appbarlayout"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.google.android.gms.ads.AdView

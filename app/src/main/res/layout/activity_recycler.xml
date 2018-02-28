@@ -20,7 +20,7 @@
                 android:id="@+id/toolbar_recycler"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/mobss_appbarlayout"
+                android:background="@color/mobss_color_primary_blue"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -81,8 +81,7 @@
 
     <android.support.constraint.ConstraintLayout android:layout_width="match_parent"
                                                  android:layout_marginTop="?attr/actionBarSize"
-                                                 android:layout_height="match_parent"
-                                                 android:background="@color/mobss_appbarlayout">
+                                                 android:layout_height="match_parent">
 
         <android.support.v4.widget.SwipeRefreshLayout
                 android:id="@+id/swipeRefreshLayout"
@@ -97,8 +96,7 @@
                     android:id="@+id/rv_recycler"
                     android:scrollbars="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/mobss_appbarlayout"
+                    android:layout_height="match_parent"
                     android:animateLayoutChanges="true"
             />
         </android.support.v4.widget.SwipeRefreshLayout>
@@ -110,6 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
+                android:visibility="gone"
                 ads:adSize="LARGE_BANNER"
                 ads:adUnitId="@string/ADMOB_BANNER_AD_UNIT_ID"
                 ads:layout_constraintBottom_toBottomOf="parent"
