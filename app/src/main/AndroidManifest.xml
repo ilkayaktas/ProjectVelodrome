@@ -23,9 +23,9 @@
 
         <activity android:name=".views.activities.home.MainActivity"
                   android:screenOrientation="portrait"
-                  android:parentActivityName=".views.activities.home.MainActivity"> <!-- notofication support for Android 4.1 and later -->
+                  android:parentActivityName=".views.activities.home.MainActivity"
+                  android:theme="@style/Theme.Design.Light.NoActionBar">
 
-            <!-- notofication support for Android 4.0.3 and lower.-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -41,21 +41,21 @@
                 android:name=".views.activities.another.AnotherActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateHidden|adjustPan"
-                android:theme="@style/Theme.Design.NoActionBar">
+                android:theme="@style/Theme.Design.Light.NoActionBar">
         </activity>
 
         <activity
                 android:name=".views.activities.appbarlayout.AppBarLayoutActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateHidden|adjustPan"
-                android:theme="@style/Theme.Design.NoActionBar">
+                android:theme="@style/Theme.Design.Light.NoActionBar">
         </activity>
 
         <activity
                 android:name=".views.activities.recyclershowcase.RecyclerViewActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="stateHidden|adjustPan"
-                android:theme="@style/Theme.Design.NoActionBar">
+                android:theme="@style/Theme.Design.Light.NoActionBar">
 
         </activity>
 

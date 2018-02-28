@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 	@Inject
 	MainMvpPresenter<MainMvpView> mPresenter;
 
+	@BindView(R.id.toolbar_title) TextView toolbarTitle;
 	@BindView(R.id.spinner) Spinner spinner;
 
 	@Override
@@ -66,8 +68,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 		userAdapter.add(new Dummy("David","Gilmour"));
 		userAdapter.add(new Dummy("Rick","Wright"));
 		spinner.setAdapter(userAdapter);
+
+		setFont();
 	}
 
+	private void setFont(){
+		toolbarTitle.setTypeface(fontGothic);
+	}
 	@Override
 	protected void onStart() {
 		super.onStart();
