@@ -15,7 +15,7 @@ import javax.inject.Inject;
 public class App extends Application {
 	
 	ApplicationComponent appComponent;
-	
+
 	@Inject
 	IDataManager mIDataManager;
 	
@@ -28,7 +28,9 @@ public class App extends Application {
 		MobileAds.initialize(this, BuildConfig.ADMOB_APP_ID);
 
 		initializeInjector();
-		
+
+		// Setup handler for uncaught exceptions.
+		Thread.setDefaultUncaughtExceptionHandler (this::handleUncaughtException);
 	}
 	
 	private void initializeInjector(){
@@ -48,5 +50,15 @@ public class App extends Application {
 	protected void attachBaseContext(Context base) {
 		super.attachBaseContext(base);
 		MultiDex.install(this);
+	}
+
+	public void handleUncaughtException (Thread thread, Throwable e)
+	{
+		Thread.UncaughtExceptionHandler uch = Thread.getDefaultUncaughtExceptionHandler();
+		e.printStackTrace(); // not all Android versions will print the stack trace automatically
+
+		System.out.println("UncaughtException is handled!");
+
+		System.exit(-1);
 	}
 }
