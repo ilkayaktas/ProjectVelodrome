@@ -11,7 +11,6 @@ import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.DataManager;
 import com.ilkayaktas.projectname.views.activities.home.MainActivity;
 import com.ilkayaktas.projectname.views.widgets.notification.MobssNotification;
-import com.ilkayaktas.projectname.views.widgets.notification.MobssNotificationBuilder;
 
 import javax.inject.Inject;
 
@@ -37,7 +36,7 @@ public class MobssCustomNotificationService extends Service {
         contentView.setTextViewText(R.id.title, "Custom notification");
         contentView.setTextViewText(R.id.text, "This is a custom layout");
 
-        notification = MobssNotificationBuilder.instance()
+        notification = MobssNotification.builder()
                 .context(this)
                 .invocationActivity(MainActivity.class)
                 .remoteViews(contentView)

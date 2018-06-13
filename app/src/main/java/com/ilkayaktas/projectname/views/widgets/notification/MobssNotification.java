@@ -10,7 +10,7 @@ import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 import com.ilkayaktas.projectname.R;
-import com.ilkayaktas.projectname.annotaionprocessing.annotations.BuilderPattern;
+import lombok.Builder;
 
 import java.util.Random;
 
@@ -20,17 +20,17 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  * Created by iaktas on 27.11.2017 at 16:29.
  */
 
-@BuilderPattern
+@Builder
 public class MobssNotification {
-    public Context context = null;
-    public String message = "Notification message";
-    public String title = "Notification Title";
-    public Class invocationActivity;
-    public int smallIcon = R.mipmap.ic_launcher;
-    public boolean onGoing = false;
-    public int notificationId = -1;
-    public RemoteViews remoteViews = null;
-    public Integer paramId = null;
+    @Builder.Default public Context context = null;
+    @Builder.Default public String message = "Notification message";
+    @Builder.Default public String title = "Notification Title";
+    private Class invocationActivity;
+    @Builder.Default private int smallIcon = R.mipmap.ic_launcher;
+    @Builder.Default private boolean onGoing = false;
+    @Builder.Default private int notificationId = -1;
+    @Builder.Default private RemoteViews remoteViews = null;
+    @Builder.Default private Integer paramId = null;
     private Notification notification;
 
     public void showNotification() {

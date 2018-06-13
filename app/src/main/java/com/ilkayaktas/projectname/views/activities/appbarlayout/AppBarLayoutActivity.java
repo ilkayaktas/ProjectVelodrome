@@ -22,7 +22,6 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
-import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.adapters.ViewPagerAdapter;
 import com.ilkayaktas.projectname.views.widgets.dialogs.rateme.Config;
@@ -184,7 +183,7 @@ public class AppBarLayoutActivity extends BaseActivity implements AppBarLayoutMv
 		adView.loadAd(adRequest);
 
 		// Load interstatial ads
-		final MobssAds mobssAds = MobssAdsBuilder.instance().build();
+		final MobssAds mobssAds = MobssAds.builder().build();
 		InterstitialAd interstitialAd = mobssAds.loadInterstitialAds(this);
 
 		interstitialAd.setAdListener(new AdListener(){
@@ -233,6 +232,11 @@ public class AppBarLayoutActivity extends BaseActivity implements AppBarLayoutMv
 			@Override
 			public void onRewardedVideoAdFailedToLoad(int i) {
 
+			}
+
+			@Override
+			public void onRewardedVideoCompleted() {
+				Log.d(TAG, "onRewardedVideoCompleted: ");
 			}
 		});
 

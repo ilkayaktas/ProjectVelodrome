@@ -14,9 +14,9 @@ import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.ilkayaktas.projectname.BuildConfig;
-import com.ilkayaktas.projectname.annotaionprocessing.annotations.BuilderPattern;
-import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.R;
+import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
+import lombok.Builder;
 
 import java.util.List;
 
@@ -24,9 +24,10 @@ import java.util.List;
  * Created by iaktas on 28.11.2017 at 22:10.
  */
 
-@BuilderPattern
+@Builder
 public class MobssAds {
     private static final String TAG = "MobssAds";
+    @Builder.Default
     public String adUnitId = null;
 
     /** If you want to add ads on layout, use below and inflate it.
@@ -132,6 +133,11 @@ public class MobssAds {
             @Override
             public void onRewardedVideoAdFailedToLoad(int i) {
                 Log.d(TAG, "onRewardedVideoAdFailedToLoad: ");
+            }
+
+            @Override
+            public void onRewardedVideoCompleted() {
+                Log.d(TAG, "onRewardedVideoCompleted: ");
             }
         });
 

@@ -17,11 +17,9 @@ import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.controller.alarms.dailynotification.DailyNotificationAlarm;
 import com.ilkayaktas.projectname.controller.services.MobssPeriodicNotificationTimerService;
 import com.ilkayaktas.projectname.controller.services.ads.MobssAds;
-import com.ilkayaktas.projectname.controller.services.ads.MobssAdsBuilder;
 import com.ilkayaktas.projectname.utils.DateUtils;
 import com.ilkayaktas.projectname.views.activities.base.BaseActivity;
 import com.ilkayaktas.projectname.views.widgets.notification.MobssNotification;
-import com.ilkayaktas.projectname.views.widgets.notification.MobssNotificationBuilder;
 
 import javax.inject.Inject;
 import java.util.Calendar;
@@ -109,7 +107,7 @@ public class AdsShowcaseActivity extends BaseActivity implements AdsShowcaseMvpV
 
 	@OnClick(R.id.ib_main_sendnotification)
 	public void onSendNotificationButton(View view){
-		MobssNotification notification = MobssNotificationBuilder.instance()
+		MobssNotification notification = MobssNotification.builder()
 				.context(AdsShowcaseActivity.this)
 				.invocationActivity(AdsShowcaseActivity.class)
 				.title(TAG)
@@ -129,7 +127,7 @@ public class AdsShowcaseActivity extends BaseActivity implements AdsShowcaseMvpV
 		contentView.setTextViewText(R.id.title, "Custom notification");
 		contentView.setTextViewText(R.id.text, "This is a custom layout");
 
-		MobssNotification notification = MobssNotificationBuilder.instance()
+		MobssNotification notification = MobssNotification.builder()
 				.context(this)
 				.invocationActivity(AdsShowcaseActivity.class)
 				.remoteViews(contentView)
@@ -168,17 +166,17 @@ public class AdsShowcaseActivity extends BaseActivity implements AdsShowcaseMvpV
 		adView.loadAd(adRequest);
 
 		// Load banner ads
-		MobssAdsBuilder.instance().build().loadBannerAds(this);
+		MobssAds.builder().build().loadBannerAds(this);
 
 		// Load interstatial ads
-		mobssAds = MobssAdsBuilder.instance().build();
+		mobssAds = MobssAds.builder().build();
 		interstitialAd = mobssAds.loadInterstitialAds(this);
 
-		mobssAds1 = MobssAdsBuilder.instance().build();
+		mobssAds1 = MobssAds.builder().build();
 		// Load rewarded video ads
 		rewardedVideoAd = mobssAds1.loadRewardedVideoAds(this, rewardItem -> Log.d(TAG, "Duded Rewarded: type:"+rewardItem.getType()+" amount:"+rewardItem.getAmount()));
 
-		mobssAds2 = MobssAdsBuilder.instance().build();
+		mobssAds2 = MobssAds.builder().build();
 		mobssAds2.loadNativeAdsContent(this, findViewById(R.id.fl_adplaceholder));
 
 

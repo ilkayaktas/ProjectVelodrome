@@ -8,7 +8,6 @@ import android.util.Log;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.home.MainActivity;
 import com.ilkayaktas.projectname.views.widgets.notification.MobssNotification;
-import com.ilkayaktas.projectname.views.widgets.notification.MobssNotificationBuilder;
 
 /**
  * Created by iaktas on 23.11.2017 at 14:41.
@@ -22,7 +21,7 @@ public class MobssNotificationService extends Service {
     public void onCreate() {
         super.onCreate();
 
-        notification = MobssNotificationBuilder.instance()
+        notification = MobssNotification.builder()
                 .context(MobssNotificationService.this)
                 .invocationActivity(MainActivity.class)
                 .title(TAG)

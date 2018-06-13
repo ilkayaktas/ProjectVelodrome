@@ -8,7 +8,6 @@ import android.util.Log;
 import com.ilkayaktas.projectname.R;
 import com.ilkayaktas.projectname.views.activities.home.MainActivity;
 import com.ilkayaktas.projectname.views.widgets.notification.MobssNotification;
-import com.ilkayaktas.projectname.views.widgets.notification.MobssNotificationBuilder;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,7 +30,7 @@ public class MobssPeriodicNotificationTimerService extends Service {
         timerTask = new TimerTask() {
             @Override
             public void run() {
-                MobssNotification notification = MobssNotificationBuilder.instance()
+                MobssNotification notification = MobssNotification.builder()
                         .context(MobssPeriodicNotificationTimerService.this)
                         .invocationActivity(MainActivity.class)
                         .title(TAG)
