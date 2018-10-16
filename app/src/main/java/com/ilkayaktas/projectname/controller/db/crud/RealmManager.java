@@ -12,7 +12,7 @@ import io.realm.Sort;
 @Singleton
 public class RealmManager implements DatabaseManager {
 
-	private Realm realm = null;
+	private Realm realm;
 
 	@Inject
 	public RealmManager(Realm realm){
@@ -27,45 +27,23 @@ public class RealmManager implements DatabaseManager {
 	public void saveOrUpdate(Object object){
 
 		final RealmObject obj = (RealmObject) object;
-		realm.executeTransaction(new Realm.Transaction() {
-			@Override
-			public void execute(Realm bgRealm) {
-				bgRealm.copyToRealmOrUpdate(obj);
-			}
-		});
+		realm.executeTransaction(bgRealm -> bgRealm.copyToRealmOrUpdate(obj));
 	}
 
 	public void saveOrUpdateAsync(Object object){
 		final RealmObject obj = (RealmObject) object;
 
-		realm.executeTransactionAsync(new Realm.Transaction() {
+		realm.executeTransactionAsync(bgRealm -> bgRealm.copyToRealmOrUpdate(obj), () -> {
 
-				@Override
-				public void execute(Realm bgRealm) {
-					bgRealm.copyToRealmOrUpdate(obj);
-				}
-			}, new Realm.Transaction.OnSuccess() {
-				@Override
-				public void onSuccess() {
+		}, error -> {
 
-				}
-			}, new Realm.Transaction.OnError() {
-				@Override
-				public void onError(Throwable error) {
-
-				}
 			});
 	}
 
 	@Override
 	public void saveOrUpdate(Iterable objects) {
 		final Iterable obj = objects;
-		realm.executeTransaction(new Realm.Transaction() {
-			@Override
-			public void execute(Realm bgRealm) {
-				bgRealm.copyToRealmOrUpdate(obj);
-			}
-		});
+		realm.executeTransaction(bgRealm -> bgRealm.copyToRealmOrUpdate(obj));
 	}
 
 	@Override
@@ -110,12 +88,7 @@ public class RealmManager implements DatabaseManager {
 		final RealmResults result = get(clss, fieldName, equalValue);
 		
 		// Delete all results
-		realm.executeTransaction(new Realm.Transaction() {
-			@Override
-			public void execute(Realm realm) {
-				result.deleteAllFromRealm();
-			}
-		});
+		realm.executeTransaction(realm -> result.deleteAllFromRealm());
 	}
 	
 	public Realm getRealm() {
@@ -127,12 +100,7 @@ public class RealmManager implements DatabaseManager {
 		final RealmResults result = getAll(clss);
 
 		// Delete all results
-		realm.executeTransaction(new Realm.Transaction() {
-			@Override
-			public void execute(Realm realm) {
-				result.deleteAllFromRealm();
-			}
-		});
+		realm.executeTransaction(realm -> result.deleteAllFromRealm());
 	}
 
 }

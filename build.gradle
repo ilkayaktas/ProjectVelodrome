@@ -38,39 +38,5 @@ task clean(type: Delete) {
 ext {
     // App dependencies
     supportLibraryVersion = '27.0.2'
-    constraintsLibraryVersion = '1.0.2'
 
-    // Ads
-    adsVersion = "15.0.1"
-
-    //Test dependencies
-    junitVersion = '4.12'
-    espressoVersion = '2.2.2'
-
-    multidexVersion = '1.0.2'
-
-    // Dagger version
-    daggerVersion = '2.0'
-
-    // Butterknife
-    butterKnifeVersion = '8.8.1'
-
-    // EventBus
-    eventBusVersion = '3.0.0'
-
-    // Lovely Dialog
-    lovelydialog = '1.0.7'
-
-    // Toasty
-    toastyVersion = '1.2.5'
-
-    // Requery
-    requeryVersion = '1.4.1'
-
-    // RxJava
-    rxJavaVersion = '2.1.6'
-    rxAndroidVersion = '2.0.1'
-
-    // ViewPropertyObjectAnimator
-    viewPropertyObjectAnimatorVersion = '1.4.5'
-}
+ }
