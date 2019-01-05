@@ -33,6 +33,7 @@ public class BuilderProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
+        // Which annotations will handled by this processor?
         Set<String> annotations = new LinkedHashSet<String>();
         annotations.add(BuilderPattern.class.getCanonicalName());/*You can add other processors here*/
         return annotations;
@@ -72,7 +73,7 @@ public class BuilderProcessor extends AbstractProcessor {
             // Get all fields of annotated class
             List<BuilderAnnotatedClass> listOfFields = new ArrayList<>( );
             for (Element e : typeElement.getEnclosedElements()) {
-                // if the element is field and acces modifier is public, than use it
+                // if the element is field and access modifier is public, than use it
                 if(e.getKind().isField() && e.getModifiers().contains(Modifier.PUBLIC)){
                     listOfFields.add(new BuilderAnnotatedClass(e));
                 }
