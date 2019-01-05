@@ -42,12 +42,11 @@ android {
     }
 
 
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.ilkayaktas.projectname"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode getCommitCount()
         versionName getTag()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -85,13 +84,16 @@ android {
             variant -> variant.buildConfigField "String", "API_KEY", "\"" + getApiKey() + "\""
         }
     }
+
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
+
     dataBinding {
         enabled = true
     }
+
     productFlavors {
     }
 }
@@ -101,7 +103,7 @@ dependencies {
 
     // Appcompat and Constraint Layout
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintsLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:1.1.3"
 
     // Constraints layout
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
@@ -112,51 +114,45 @@ dependencies {
     // Snackbar
     implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
 
-    // Cardview
-
     // Ads
-    implementation "com.google.android.gms:play-services-ads:$rootProject.adsVersion"
+    implementation "com.google.android.gms:play-services-ads:15.0.1"
 
     // Test
-    testImplementation "junit:junit:$rootProject.junitVersion"
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs'
     })
 
     // Multidex
-    implementation "com.android.support:multidex:$rootProject.multidexVersion"
+    implementation "com.android.support:multidex:1.0.3"
 
     // Dagger
-    implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
+    implementation "com.google.dagger:dagger:2.11"
+    annotationProcessor "com.google.dagger:dagger-compiler:2.11"
     compileOnly 'javax.annotation:jsr250-api:1.0'
 
     // Butterknife
-    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+    implementation "com.jakewharton:butterknife:8.8.1"
+    annotationProcessor "com.jakewharton:butterknife-compiler:8.8.1"
 
     // EventBus
-    implementation "org.greenrobot:eventbus:$rootProject.eventBusVersion"
+    implementation "org.greenrobot:eventbus:3.1.1"
 
     // Lovely Dialog
-    implementation "com.yarolegovich:lovely-dialog:$rootProject.lovelydialog"
+    implementation "com.yarolegovich:lovely-dialog:1.0.7"
 
     // Toasty
-    implementation "com.github.GrenderG:Toasty:$rootProject.toastyVersion"
-
-    // Requery
-    implementation "io.requery:requery-android:$rootProject.requeryVersion"
-    annotationProcessor "io.requery:requery-processor:$rootProject.requeryVersion"
+    implementation "com.github.GrenderG:Toasty:1.2.5"
 
     // RXJava
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
+    implementation "io.reactivex.rxjava2:rxjava:2.1.10"
 
     // ViewPropertyObjectAnimator
-    implementation "com.bartoszlipinski:viewpropertyobjectanimator:$rootProject.viewPropertyObjectAnimatorVersion"
+    implementation "com.bartoszlipinski:viewpropertyobjectanimator:1.4.5"
 
     // Lombok
-    compileOnly 'org.projectlombok:lombok:1.18.0'
-    annotationProcessor "org.projectlombok:lombok:1.18.0"
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+    annotationProcessor "org.projectlombok:lombok:1.18.2"
 }
